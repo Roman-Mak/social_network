@@ -1,0 +1,118 @@
+.app-wrapper {
+  width: 1250px;
+  margin: 0 auto;
+  grid-template-areas:
+  "h h"
+  "n c";
+  display: grid;
+  grid-template-rows: 60px 1fr;
+  grid-template-columns: 2fr 10fr;
+  /*grid-gap: 10px;*/
+}
+
+.header {
+  grid-area: h;
+  background-color: forestgreen;
+}
+
+.nav {
+  grid-area: n;
+  background-color: greenyellow;
+  font-size: 18px;
+  margin-top: 15px;
+}
+
+.nav div {
+  margin-top: 10px;
+  text-align: left;
+  margin-left: 90px;
+}
+
+.content {
+  grid-area: c;
+  background-color: lightseagreen;
+  margin-left: 15px;
+  margin-top: 15px;
+}
+
+.profile {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.information {
+  display: flex;
+  flex-direction: row;
+}
+
+.avatar {
+  height: 200px;
+  width: 200px;
+  margin-left: 30px;
+  margin-top: 20px;
+}
+
+.head_img {
+  width: 1030px;
+  height: 250px;
+}
+
+.logo {
+  height: 50px;
+  width: 50px;
+}
+
+.description {
+  align-self: flex-start;
+  width: 600px;
+  margin-top: 30px;
+}
+
+.myName {
+  margin-bottom: 30px;
+}
+
+.createpost {
+  justify-content: flex-start;
+  margin-top: 20px;
+  margin-left: 30px;
+  background-color: whitesmoke;
+  width: 500px;
+}
+
+.headOfPosts {
+  background-color: aqua;
+  height: 30px;
+}
+
+.newpost {
+  background-color: whitesmoke;
+  height: 70px;
+}
+
+.send-button {
+  align-self: center;
+  text-align: right;
+  background-color: darkred;
+}
+
+.posts div {
+  align-self: flex-end;
+  margin-top: 20px;
+  margin-left: 30px;
+  width: 500px;
+  background-color: whitesmoke;
+}
+
+.avatar_small {
+  width: 25px;
+  height: 25px;
+  margin-right: 10px;
+}
+
+.description div {
+  margin-left: 30px;
+  margin-top: 5px;
+}
