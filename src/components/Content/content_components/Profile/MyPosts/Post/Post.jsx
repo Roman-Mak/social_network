@@ -1,19 +1,11 @@
-import avatar from "../../../../../img/wolf.jpg"
+import avatar from "../../ProfileInfo/img/wolf.jpg"
 import React from "react";
+import style from "./Post.module.css"
 
-const MyPosts = () => {
-    return <div>
-    <div className='createpost'>
-            <div className='headOfPosts'>What's new</div>
-            <div className='newpost'>Share your status...</div>
-            <button className='send-button'>Send</button>
-        </div>
-        <div className='posts'>
-            <div><img className='avatar_small' src={avatar}/>I'm ALIVE!!!</div>
-            <div><img className='avatar_small' src={avatar}/>I'm not machine!</div>
-            <div><img className='avatar_small' src={avatar}/>I'm not your slave!</div>
-        </div>
+const Post = (props) => {
+    return <div className={style.post}>
+        <div><img className={style.avatar} src={avatar}/>{props.message}</div>
     </div>
 }
 
-export default MyPosts
+export default Post

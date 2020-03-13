@@ -1,0 +1,17 @@
+.messages {
+    display: flex;
+    flex-direction: row;
+}
+
+.dialogs {
+    width: 30%;
+    padding: 10px;
+}
+
+.dialogs .active {
+    color: white;
+}
+
+.chats {
+    padding: 10px;
+}

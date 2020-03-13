@@ -1,0 +1,36 @@
+.profileInfo {
+    width: 100%;
+}
+
+.information {
+    display: flex;
+    flex-direction: row;
+}
+
+.avatar {
+    height: 200px;
+    width: 200px;
+    margin-left: 30px;
+    margin-top: 20px;
+    border-radius: 50%;
+}
+
+.head_img {
+    width: 100%;
+    height: 200px;
+}
+
+.description {
+    align-self: flex-start;
+    width: 600px;
+    margin-top: 30px;
+}
+
+.name {
+    margin-bottom: 30px;
+}
+
+.description div {
+    margin-left: 30px;
+    margin-top: 5px;
+}

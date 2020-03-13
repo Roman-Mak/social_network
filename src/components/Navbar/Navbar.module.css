@@ -1,26 +1,21 @@
-import React from "react";
-
-const Navbar = () => {
-    return <nav className='nav'>
-        <div>
-            <a>Profile</a>
-        </div>
-        <div>
-            <a>Friends</a>
-        </div>
-        <div>
-            <a>Messages</a>
-        </div>
-        <div>
-            <a>News</a>
-        </div>
-        <div>
-            <a>Music</a>
-        </div>
-        <div>
-            <a>Settings</a>
-        </div>
-    </nav>
+.nav {
+    grid-area: n;
+    background-color: greenyellow;
+    font-size: 18px;
+    margin-top: 15px;
 }
 
-export default Navbar;
+.item {
+    margin-top: 10px;
+    text-align: left;
+    margin-left: 90px;
+}
+
+.item a {
+    color: black;
+    text-decoration: none;
+}
+
+.item .active {
+    color: white;
+}
