@@ -4,16 +4,25 @@ import Post from "./Post/Post";
 import style from "./MyPosts.module.css"
 
 const MyPosts = () => {
+
+    let posts = [
+        {message: "I'm ALIVE!!!", id: "3"},
+        {message: "I'm not machine!", id: "2"},
+        {message: "I'm not your slave!", id: "1"}
+    ];
+
+    let postElements = posts.map(post => <Post message={post.message}/>);
+
     return (
         <div>
             <div className={style.createPost}>
                 <div className={style.headOfNewPost}>What's new</div>
-                <div className={style.newPost}>Share your status...</div>
+                <div className={style.newPost}>
+                    <input type="text" placeholder="Share your status..."/>
+                </div>
                 <button className={style.sendButton}>Send</button>
             </div>
-            <Post message="I'm ALIVE!!!"/>
-            <Post message="I'm not machine!"/>
-            <Post message="I'm not your slave!"/>
+            {postElements}
         </div>
     )
 }

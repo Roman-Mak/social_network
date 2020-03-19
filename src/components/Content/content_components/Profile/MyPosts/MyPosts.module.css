@@ -15,10 +15,8 @@
 .newPost {
     background-color: whitesmoke;
     height: 50px;
-    opacity: 0.5;
 }
 
 .sendButton {
     align-self: flex-end;
-    text-align: right;
 }

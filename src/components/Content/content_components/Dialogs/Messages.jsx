@@ -17,20 +17,33 @@ const Chat = (props) => {
 }
 
 const Messages = () => {
+
+    let dialogs = [
+        {name: "Saha", id: "1"},
+        {name: "Dima", id: "2"},
+        {name: "Kovalsky", id: "3"},
+        {name: "Dusya", id: "4"},
+        {name: "Anton", id: "5"},
+        {name: "Nick", id: "6"},
+    ];
+
+    let chats = [
+        {message: "Zdarova", id: "1"},
+        {message: "Jaba", id: "2"},
+        {message: "Go v dotu", id: "3"}
+    ];
+
+    let dialogsElement = dialogs.map(dialog => <Dialog name={dialog.name} id={dialog.id}/>);
+
+    let chatsElement = chats.map(chat => <Chat message={chat.message}/>);
+
     return (
         <div className={style.messages}>
             <div className={style.dialogs}>
-                <Dialog name="Saha" id="1"/>
-                <Dialog name="Dima" id="2"/>
-                <Dialog name="Kovalsky" id="3"/>
-                <Dialog name="Dusya" id="4"/>
-                <Dialog name="Anton" id="5"/>
-                <Dialog name="Nick" id="6"/>
+                {dialogsElement}
             </div>
             <div className={style.chats}>
-                <Chat message="Zdarova"/>
-                <Chat message="Jaba"/>
-                <Chat message="Go v dotu"/>
+                {chatsElement}
             </div>
         </div>
     )
