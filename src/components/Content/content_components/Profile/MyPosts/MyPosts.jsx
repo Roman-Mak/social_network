@@ -3,15 +3,7 @@ import React from "react";
 import Post from "./Post/Post";
 import style from "./MyPosts.module.css"
 
-const MyPosts = () => {
-
-    let posts = [
-        {message: "I'm ALIVE!!!", id: "3"},
-        {message: "I'm not machine!", id: "2"},
-        {message: "I'm not your slave!", id: "1"}
-    ];
-
-    let postElements = posts.map(post => <Post message={post.message}/>);
+const MyPosts = (props) => {
 
     return (
         <div>
@@ -22,7 +14,7 @@ const MyPosts = () => {
                 </div>
                 <button className={style.sendButton}>Send</button>
             </div>
-            {postElements}
+            {props.posts};
         </div>
     )
 }

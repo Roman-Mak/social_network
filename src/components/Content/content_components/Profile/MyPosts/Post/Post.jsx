@@ -6,6 +6,6 @@ const Post = (props) => {
     return <div className={style.post}>
         <div><img className={style.avatar} src={avatar}/>{props.message}</div>
     </div>
-}
+};
 
 export default Post
