@@ -5,13 +5,13 @@ import Navbar from "./components/Navbar/Navbar";
 import Content from "./components/Content/Content";
 import {BrowserRouter} from "react-router-dom";
 
-const App = () => {
+const App = (props) => {
     return (
         <BrowserRouter>
             <div className='app-wrapper'>
                 <Header />
                 <Navbar />
-                <Content />
+                <Content posts={props.posts} dialogs={props.dialogs} chats={props.chats} />
             </div>
         </BrowserRouter>
     );

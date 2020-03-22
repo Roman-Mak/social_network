@@ -1,9 +1,10 @@
-import avatar from "../ProfileInfo/img/wolf.jpg"
 import React from "react";
 import Post from "./Post/Post";
 import style from "./MyPosts.module.css"
 
 const MyPosts = (props) => {
+
+    let postElements = props.posts.map(post => <Post message={post.message}/>);
 
     return (
         <div>
@@ -14,7 +15,7 @@ const MyPosts = (props) => {
                 </div>
                 <button className={style.sendButton}>Send</button>
             </div>
-            {props.posts};
+            {postElements};
         </div>
     )
 }

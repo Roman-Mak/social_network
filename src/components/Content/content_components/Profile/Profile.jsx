@@ -2,24 +2,15 @@ import React from "react";
 import MyPosts from "./MyPosts/MyPosts";
 import style from "./Profile.module.css";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
-import Post from "./MyPosts/Post/Post";
 
-const Profile = () => {
-
-    let posts = [
-        {message: "I'm ALIVE!!!", id: "3"},
-        {message: "I'm not machine!", id: "2"},
-        {message: "I'm not your slave!", id: "1"}
-    ];
-
-    let postElements = posts.map(post => <Post message={post.message}/>);
+const Profile = (props) => {
 
     return (
         <div className={style.profile}>
             <ProfileInfo />
-            <MyPosts posts={postElements} />
+            <MyPosts posts={props.posts} />
         </div>
     )
-}
+};
 
 export default Profile
