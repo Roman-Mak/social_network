@@ -5,6 +5,6 @@ const Chat = (props) => {
     return (
         <div className={style.chat}>{props.message}</div>
     )
-}
+};
 
 export default Chat

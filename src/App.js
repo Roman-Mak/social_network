@@ -3,18 +3,16 @@ import './App.css';
 import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
 import Content from "./components/Content/Content";
-import {BrowserRouter} from "react-router-dom";
+import {addPost} from "./redux/state";
 
 const App = (props) => {
     return (
-        <BrowserRouter>
             <div className='app-wrapper'>
                 <Header />
                 <Navbar />
-                <Content posts={props.posts} dialogs={props.dialogs} chats={props.chats} />
+                <Content state={props.state} addPots={addPost} />
             </div>
-        </BrowserRouter>
     );
-}
+};
 
 export default App;

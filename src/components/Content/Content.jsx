@@ -11,8 +11,11 @@ import Settings from "./content_components/Settings/Settings";
 const Content = (props) => {
     return (
             <div className={style.content}>
-                <Route path="/profile" render={() => <Profile posts={props.posts}/>}/>
-                <Route path="/dialogs" render={() => <Messages dialogs={props.dialogs} chats={props.chats}/>}/>
+                <Route path="/profile" render={() => <Profile
+                    state={props.state.profilePage}
+                    addPost={props.addPots}
+                />}/>
+                <Route path="/dialogs" render={() => <Messages state={props.state.messagesPage}/>}/>
                 <Route path="/friends" render={() => <Friends/>}/>
                 <Route path="/news" render={() => <News/>}/>
                 <Route path="/music" render={() => <Music/>}/>
