@@ -2,16 +2,24 @@ import React from "react";
 import style from "./Messages.module.css";
 import Dialog from "./Dialog/Dialog";
 import Chat from "./Chat/Chat";
+import Friends from "../Friends/Friends";
+import {Route} from "react-router-dom";
 
 const Messages = (props) => {
 
-    let dialogsElement = props.state.dialogs.map(dialog => <Dialog name={dialog.name} id={dialog.id}/>);
+    let dialogsElement = props.messagePage.dialogs.map(dialog => <Dialog name={dialog.name} id={dialog.id}/>);
 
-    let chatsElement = props.state.dialogs.map(dialog => dialog.chats.map(chat => <Chat message={chat.message}/>));
+    let chatsElement = props.messagePage.dialogs.map(dialog => dialog.chats.map(chat => <Chat message={chat.message}/>));
 
-    let newMessageEl = React.createRef();
-    let addMessage = () => {
-        alert(newMessageEl.current.value)
+    let chatsElementRoute = chatsElement.map((el, i) => {
+        return <Route path={`/dialogs/${i + 1}`} render={() => chatsElement[i]}/>
+    });
+
+    // let newMessageEl = React.createRef();
+
+    let onChangeText = (e) => {
+        let text = e.currentTarget.value;
+        props.updateNewMessageText(text);
     };
 
     return (
@@ -20,9 +28,13 @@ const Messages = (props) => {
                 {dialogsElement}
             </div>
             <div className={style.chats}>
-                {chatsElement}
-                <input ref={newMessageEl} type="text"/>
-                <button onClick={addMessage}>Send</button>
+                {chatsElementRoute}
+                <textarea
+                    // ref={newMessageEl}
+                    value={props.messagePage.newMessageText}
+                    onChange={onChangeText}
+                />
+                <button onClick={props.addMessage}>Send</button>
             </div>
         </div>
     )

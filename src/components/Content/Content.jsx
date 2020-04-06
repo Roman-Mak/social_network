@@ -12,10 +12,15 @@ const Content = (props) => {
     return (
             <div className={style.content}>
                 <Route path="/profile" render={() => <Profile
-                    state={props.state.profilePage}
+                    profilePage={props.state.profilePage}
                     addPost={props.addPots}
+                    updateNewPostText={props.updateNewPostText}
                 />}/>
-                <Route path="/dialogs" render={() => <Messages state={props.state.messagesPage}/>}/>
+                <Route path="/dialogs" render={() => <Messages
+                    messagePage={props.state.messagesPage}
+                    addMessage={props.addMessage}
+                    updateNewMessageText={props.updateNewMessageText}
+                />}/>
                 <Route path="/friends" render={() => <Friends/>}/>
                 <Route path="/news" render={() => <News/>}/>
                 <Route path="/music" render={() => <Music/>}/>

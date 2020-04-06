@@ -4,14 +4,17 @@ import style from "./MyPosts.module.css"
 
 const MyPosts = (props) => {
 
-    let postElements = props.posts.map(post => <Post message={post.message}/>);
+    let postElements = props.profilePage.posts.map(post => <Post message={post.message}/>);
 
-    let newPostEl = React.createRef();
+    // let newPostEl = React.createRef();
 
-    let addPost = () => {
-        let text = newPostEl.current.value;
-        newPostEl.current.value = "";
-        props.addPost(text);
+    // let addPost = () => {
+    //     props.addPost();
+    // };
+
+    let onPostChange = (e) => {
+        let text = e.currentTarget.value;
+        props.updateNewPostText(text);
     };
 
     return (
@@ -19,9 +22,14 @@ const MyPosts = (props) => {
             <div className={style.createPost}>
                 <div className={style.headOfNewPost}>What's new</div>
                 <div className={style.newPost}>
-                    <textarea ref={newPostEl} type="text" placeholder="Share your status..."></textarea>
+                    <textarea
+                        // ref={newPostEl}
+                        placeholder="Share your status..."
+                        onChange={onPostChange}
+                        value={props.profilePage.newPostText}
+                    />
                 </div>
-                <button onClick={addPost} className={style.sendButton}>Send</button>
+                <button onClick={props.addPost} className={style.sendButton}>Send</button>
             </div>
             {postElements};
         </div>
