@@ -1,19 +1,19 @@
 import React from "react";
 import Post from "./Post/Post";
 import style from "./MyPosts.module.css"
+import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../../../redux/state";
 
 const MyPosts = (props) => {
 
     let postElements = props.profilePage.posts.map(post => <Post message={post.message}/>);
 
     let addPost = () => {
-        props.dispatch({type: "ADD-POST"})
+        props.dispatch(addPostActionCreator())
     };
 
     let onPostChange = (e) => {
         let text = e.currentTarget.value;
-        let action = {type: "UPDATE-NEW-POST-TEXT", text: text};
-        props.dispatch(action);
+        props.dispatch(updateNewPostTextActionCreator(text));
     };
 
     return (
@@ -22,7 +22,6 @@ const MyPosts = (props) => {
                 <div className={style.headOfNewPost}>What's new</div>
                 <div className={style.newPost}>
                     <textarea
-                        // ref={newPostEl}
                         placeholder="Share your status..."
                         onChange={onPostChange}
                         value={props.profilePage.newPostText}

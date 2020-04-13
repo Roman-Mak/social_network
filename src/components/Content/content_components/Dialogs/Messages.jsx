@@ -3,6 +3,7 @@ import style from "./Messages.module.css";
 import Dialog from "./Dialog/Dialog";
 import Chat from "./Chat/Chat";
 import {Route} from "react-router-dom";
+import {addMessageActionCreator, updateNewMessageTextActionCreator} from "../../../../redux/state";
 
 const Messages = (props) => {
 
@@ -15,12 +16,12 @@ const Messages = (props) => {
     });
 
     let addMessage = () => {
-        props.dispatch({type: "ADD-MESSAGE"})
+        props.dispatch(addMessageActionCreator());
     };
 
     let onChangeText = (e) => {
         let text = e.currentTarget.value;
-        props.dispatch({type: "UPDATE-NEW-MESSAGE-TEXT", text: text});
+        props.dispatch(updateNewMessageTextActionCreator(text));
     };
 
     return (
