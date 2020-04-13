@@ -62,38 +62,32 @@ let store = {
             newMessageText: ""
         }
     },
-
     _callSubscriber() {},
 
     getState() {
         return this._state;
     },
-
-    addMessage() {
-        let newMessage = {message: this._state.messagesPage.newMessageText, id: 4};
-        this._state.messagesPage.dialogs[0].chats.push(newMessage);
-        this._state.messagesPage.newMessageText = "";
-        this._callSubscriber(this._state);
-    },
-
-    updateNewMessageText(text) {
-        this._state.messagesPage.newMessageText = text;
-        this._callSubscriber(this._state);
-    },
-
-    addPost() {
-        let newPost = {
-            message: this._state.profilePage.newPostText,
-            id: 4
-        };
-        this._state.profilePage.posts.push(newPost);
-        this._state.profilePage.newPostText = "";
-        this._callSubscriber(this._state);
-    },
-
-    updateNewPostText(text) {
-        this._state.profilePage.newPostText = text;
-        this._callSubscriber(this._state);
+    dispatch(action) {
+        if (action.type === "ADD-POST") {
+            let newPost = {
+                message: this._state.profilePage.newPostText,
+                id: 4
+            };
+            this._state.profilePage.posts.push(newPost);
+            this._state.profilePage.newPostText = "";
+            this._callSubscriber(this._state);
+        } else if (action.type === "UPDATE-NEW-POST-TEXT") {
+            this._state.profilePage.newPostText = action.text;
+            this._callSubscriber(this._state);
+        } else if (action.type === "ADD-MESSAGE") {
+            let newMessage = {message: this._state.messagesPage.newMessageText, id: 4};
+            this._state.messagesPage.dialogs[0].chats.push(newMessage);
+            this._state.messagesPage.newMessageText = "";
+            this._callSubscriber(this._state);
+        } else if (action.type === "UPDATE-NEW-MESSAGE-TEXT") {
+            this._state.messagesPage.newMessageText = action.text;
+            this._callSubscriber(this._state);
+        }
     },
 
     subscribe(observer) {

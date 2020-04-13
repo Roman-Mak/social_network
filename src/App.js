@@ -10,10 +10,7 @@ const App = (props) => {
                 <Header />
                 <Navbar />
                 <Content state={props.state}
-                         addPost={props.addPost}
-                         updateNewPostText={props.updateNewPostText}
-                         addMessage={props.addMessage}
-                         updateNewMessageText={props.updateNewMessageText}
+                         dispatch={props.dispatch}
                 />
             </div>
     );

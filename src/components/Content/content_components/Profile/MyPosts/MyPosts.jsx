@@ -6,15 +6,14 @@ const MyPosts = (props) => {
 
     let postElements = props.profilePage.posts.map(post => <Post message={post.message}/>);
 
-    // let newPostEl = React.createRef();
-
-    // let addPost = () => {
-    //     props.addPost();
-    // };
+    let addPost = () => {
+        props.dispatch({type: "ADD-POST"})
+    };
 
     let onPostChange = (e) => {
         let text = e.currentTarget.value;
-        props.updateNewPostText(text);
+        let action = {type: "UPDATE-NEW-POST-TEXT", text: text};
+        props.dispatch(action);
     };
 
     return (
@@ -29,7 +28,7 @@ const MyPosts = (props) => {
                         value={props.profilePage.newPostText}
                     />
                 </div>
-                <button onClick={props.addPost} className={style.sendButton}>Send</button>
+                <button onClick={addPost} className={style.sendButton}>Send</button>
             </div>
             {postElements};
         </div>
