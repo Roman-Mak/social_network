@@ -13,7 +13,7 @@ const Content = (props) => {
             <div className={style.content}>
                 <Route path="/profile" render={() => <Profile
                     profilePage={props.state.profilePage}
-                    addPost={props.addPots}
+                    addPost={props.addPost}
                     updateNewPostText={props.updateNewPostText}
                 />}/>
                 <Route path="/dialogs" render={() => <Messages

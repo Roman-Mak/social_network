@@ -10,7 +10,7 @@ const App = (props) => {
                 <Header />
                 <Navbar />
                 <Content state={props.state}
-                         addPots={props.addPost}
+                         addPost={props.addPost}
                          updateNewPostText={props.updateNewPostText}
                          addMessage={props.addMessage}
                          updateNewMessageText={props.updateNewMessageText}
