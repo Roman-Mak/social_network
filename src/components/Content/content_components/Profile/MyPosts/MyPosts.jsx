@@ -1,19 +1,18 @@
 import React from "react";
 import Post from "./Post/Post";
 import style from "./MyPosts.module.css"
-import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../../../redux/profileReducer";
 
 const MyPosts = (props) => {
 
-    let postElements = props.profilePage.posts.map(post => <Post message={post.message}/>);
+    let postElements = props.posts.map(post => <Post message={post.message}/>);
 
-    let addPost = () => {
-        props.dispatch(addPostActionCreator())
+    let onAddPost = () => {
+        props.addPost();
     };
 
     let onPostChange = (e) => {
         let text = e.currentTarget.value;
-        props.dispatch(updateNewPostTextActionCreator(text));
+        props.updateNewPostText(text);
     };
 
     return (
@@ -24,10 +23,10 @@ const MyPosts = (props) => {
                     <textarea
                         placeholder="Share your status..."
                         onChange={onPostChange}
-                        value={props.profilePage.newPostText}
+                        value={props.newPostText}
                     />
                 </div>
-                <button onClick={addPost} className={style.sendButton}>Send</button>
+                <button onClick={onAddPost} className={style.sendButton}>Send</button>
             </div>
             {postElements};
         </div>
