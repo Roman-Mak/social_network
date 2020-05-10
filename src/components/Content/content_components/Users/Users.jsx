@@ -3,6 +3,10 @@ import User from "./User/User";
 import * as axios from "axios";
 
 class Users extends React.Component {
+    componentDidMount() {
+        this.getUsers();
+    }
+
     getUsers = () => {
         if (this.props.users.length === 0) {
             axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
@@ -16,15 +20,15 @@ class Users extends React.Component {
     //     {id: 3, name: "Max", status: "Yo guys", country: "Belarus", city: "Minsk", followed: false},
     //     {id: 4, name: "Anton", status: "Yo guys", country: "Belarus", city: "Minsk", followed: false}
     //     ])
-    usersList = this.props.users.map(user => {
-        return <User key={user.id} user={user} follow={this.props.follow} unfollow={this.props.unfollow}/>
-    });
+
 
     render = () => {
+        let usersList = this.props.users.map(user => {
+            return <User key={user.id} user={user} follow={this.props.follow} unfollow={this.props.unfollow}/>
+        });
         return (
             <div>
-                <button onClick={this.getUsers}>get users</button>
-                {this.usersList}
+                {usersList}
             </div>
         )
     }
