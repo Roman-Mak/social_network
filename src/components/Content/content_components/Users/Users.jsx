@@ -1,35 +1,14 @@
 import React from "react";
 import User from "./User/User";
-import * as axios from "axios";
 import style from "./Users.module.css"
 
-class Users extends React.Component {
-    componentDidMount() {
-        this.getUsers(this.props.currentPage);
-    }
+const Users = (props) => {
 
-    getUsers = (currentPage) => {
-            axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=${this.props.pageSize}`)
-                .then(response => {
-                this.props.setUsers(response.data.items);
-                this.props.setTotalUsersCount(response.data.totalCount)
-            });
-    };
-
-    onPageChanged = (currentPage) => {
-        this.props.setCurrentPage(currentPage);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=${this.props.pageSize}`)
-            .then(response => {
-                this.props.setUsers(response.data.items);
-            });
-    };
-
-    render = () => {
-        let usersList = this.props.users.map(user => {
-            return <User key={user.id} user={user} follow={this.props.follow} unfollow={this.props.unfollow}/>
+        let usersList = props.users.map(user => {
+            return <User key={user.id} user={user} follow={props.follow} unfollow={props.unfollow}/>
         });
 
-        let pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize);
+        let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
 
         let pages = [];
 
@@ -39,14 +18,13 @@ class Users extends React.Component {
 
         return (
             <div>
-                {pages.map(p => <span className={this.props.currentPage === p && style.selectedPage}
-                onClick={() => this.onPageChanged(p)}>{p} </span>)}
+                {pages.map(p => <span className={props.currentPage === p && style.selectedPage}
+                onClick={() => props.onPageChanged(p)}>{p} </span>)}
                 <div>
                     {usersList}
                 </div>
             </div>
         )
-    }
-}
+};
 
 export default Users;

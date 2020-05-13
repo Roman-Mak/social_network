@@ -6,8 +6,8 @@ import Friends from "./content_components/Friends/Friends";
 import News from "./content_components/News/News";
 import Music from "./content_components/Music/Music";
 import Settings from "./content_components/Settings/Settings";
-import MessagesContainer from "./content_components/Messages/MessagesCountainer";
-import UsersContainer from "./content_components/Users/UsersCountainer";
+import MessagesContainer from "./content_components/Messages/MessagesContainer";
+import UsersContainer from "./content_components/Users/UsersContainer";
 
 const Content = () => {
     return (
