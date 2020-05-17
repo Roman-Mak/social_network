@@ -12,7 +12,7 @@ import ProfileContainer from "./content_components/Profile/ProfileContainer";
 const Content = () => {
     return (
             <div className={style.content}>
-                <Route path="/profile" render={() => <ProfileContainer />}/>
+                <Route path="/profile/:userId?" render={() => <ProfileContainer />}/>
                 <Route path="/messages" render={() => <MessagesContainer />}/>
                 <Route path="/friends" render={() => <Friends/>}/>
                 <Route path="/news" render={() => <News />}/>
