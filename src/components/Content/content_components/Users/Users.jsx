@@ -7,10 +7,9 @@ const Users = (props) => {
             return <User
                 key={user.id}
                 user={user}
-                follow={props.follow}
-                unfollow={props.unfollow}
+                followUser={props.followUser}
+                unfollowUser={props.unfollowUser}
                 followingInProcess={props.followingInProcess}
-                toggleFollowingInProcess={props.toggleFollowingInProcess}
             />
         });
         let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);

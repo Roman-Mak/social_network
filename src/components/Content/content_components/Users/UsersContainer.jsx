@@ -2,34 +2,18 @@ import React from "react";
 import {connect} from "react-redux";
 import Users from "./Users";
 import {
-    follow, toggleFollowingInProcess,
     setCurrentPage,
-    setTotalUsersCount,
-    setUsers,
-    toggleIsFetching,
-    unfollow
+    getUsers, followUser, unfollowUser
 } from "../../../../redux/usersReducer";
 import Preloader from "../../../common/Preloader/Preloader";
-import {usersAPI} from "../../../../api/api";
 
 class UsersContainer extends React.Component {
     componentDidMount() {
-        this.getUsers();
+        this.props.getUsers(this.props.currentPage, this.props.pageSize);
     }
 
-    getUsers = (currentPage = 1) => {
-        this.props.toggleIsFetching(true);
-        usersAPI.getUsers(currentPage, this.props.pageSize)
-            .then(data => {
-                this.props.toggleIsFetching(false);
-                this.props.setUsers(data.items);
-                this.props.setTotalUsersCount(data.totalCount)
-            });
-    };
-
     onPageChanged = (currentPage) => {
-        this.props.setCurrentPage(currentPage);
-        this.getUsers(currentPage);
+        this.props.getUsers(currentPage, this.props.pageSize);
     };
 
     render = () => {
@@ -40,11 +24,10 @@ class UsersContainer extends React.Component {
                        pageSize={this.props.pageSize}
                        currentPage={this.props.currentPage}
                        totalUsersCount={this.props.totalUsersCount}
-                       follow={this.props.follow}
-                       unfollow={this.props.unfollow}
+                       followUser={this.props.followUser}
+                       unfollowUser={this.props.unfollowUser}
                        onPageChanged={this.onPageChanged}
                        followingInProcess={this.props.followingInProcess}
-                       toggleFollowingInProcess={this.props.toggleFollowingInProcess}
                 />
             </>
         )
@@ -75,11 +58,9 @@ let mapStateToProps = (state) => {
 // };
 
 export default connect(mapStateToProps, {
-    follow,
-    unfollow,
-    setUsers,
-    setTotalUsersCount,
+    followUser,
+    unfollowUser,
     setCurrentPage,
-    toggleIsFetching,
-    toggleFollowingInProcess})(UsersContainer);
+    getUsers
+})(UsersContainer);
 
