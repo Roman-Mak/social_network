@@ -4,17 +4,19 @@
     margin-top: 20px;
     margin-left: 30px;
     background-color: whitesmoke;
-    width: 500px;
+    width: 400px;
 }
 
 .headOfNewPost {
-    background-color: aqua;
+    background-color: #26a69a;
     height: 30px;
+    width: 100%;
 }
 
 .newPost {
     background-color: whitesmoke;
     height: 50px;
+    width: 99%;
 }
 
 .sendButton {

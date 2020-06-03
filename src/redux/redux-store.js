@@ -3,7 +3,7 @@ import profileReducer from "./profileReducer";
 import messagesReducer from "./messagesReducer";
 import usersReducer from "./usersReducer";
 import authReducer from "./authReducer";
-import thunkMiddleware from "redux-thunk"
+import thunkMiddleware from "redux-thunk";
 
 let reducers = combineReducers({
     profilePage: profileReducer,

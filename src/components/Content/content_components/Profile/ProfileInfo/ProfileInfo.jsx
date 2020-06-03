@@ -1,6 +1,6 @@
 import style from "./ProfileInfo.module.css";
-import head_img from "./img/headimg.jpg";
-import avatar from "./img/wolf.jpg";
+import head_img from "../../../../../assets/images/headimg.jpg";
+import avatar from "../../../../../assets/images/wolf.jpg";
 import React from "react";
 import Preloader from "../../../../common/Preloader/Preloader";
 
@@ -8,6 +8,12 @@ const ProfileInfo = (props) => {
     if (!props.profile) {
        return <Preloader/>
     }
+
+    let ava = props.profile.photos.large;
+    if (ava === null) {
+        ava = avatar;
+    }
+
     return (
         // <div className={style.profileInfo}>
         //     <img className={style.head_img} src={head_img}/>
@@ -24,7 +30,7 @@ const ProfileInfo = (props) => {
         <div className={style.profileInfo}>
             <img className={style.head_img} src={head_img}/>
             <div className={style.information}>
-                <img className={style.avatar} src={props.profile.photos.large}/>
+                <img className={style.avatar} src={ava}/>
                 <div className={style.description}>
                     <div className={style.name}>{props.profile.fullName}</div>
                     <div>City: Minsk</div>

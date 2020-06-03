@@ -8,6 +8,7 @@ import Settings from "./content_components/Settings/Settings";
 import MessagesContainer from "./content_components/Messages/MessagesContainer";
 import UsersContainer from "./content_components/Users/UsersContainer";
 import ProfileContainer from "./content_components/Profile/ProfileContainer";
+import Login from "./content_components/Login/Login";
 
 const Content = () => {
     return (
@@ -19,6 +20,7 @@ const Content = () => {
                 <Route path="/music" render={() => <Music />}/>
                 <Route path="/settings" render={() => <Settings />}/>
                 <Route path="/users" render={() => <UsersContainer />}/>
+                <Route path="/login" render={() => <Login />}/>
             </div>
     );
 };

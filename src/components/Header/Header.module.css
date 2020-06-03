@@ -1,7 +1,7 @@
-
 .header {
     grid-area: h;
-    background-color: forestgreen;
+    /*background-color: #26a69a;*/
+    background-color: cornflowerblue;
 }
 
 .logo {
