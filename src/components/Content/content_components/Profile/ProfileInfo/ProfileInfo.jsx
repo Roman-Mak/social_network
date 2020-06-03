@@ -37,7 +37,7 @@ const ProfileInfo = (props) => {
                     <div>City: Minsk</div>
                     <div>{props.profile.contacts.facebook}/</div>
                     <div>{props.profile.aboutMe}</div>
-                    <ProfileStatus status={"kekich"}/>
+                    <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
                 </div>
             </div>
         </div>

@@ -21,6 +21,12 @@ export const usersAPI = {
 export const profileAPI = {
     getUserProfile(userId) {
         return instance.get(`profile/${userId}`).then(res => res.data);
+    },
+    getUserStatus(userId) {
+        return instance.get(`profile/status/${userId}`)
+    },
+    updateStatus(status) {
+        return instance.put(`profile/status`, {status})
     }
 };
 
