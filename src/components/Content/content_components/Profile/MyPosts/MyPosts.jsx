@@ -1,34 +1,41 @@
 import React from "react";
 import Post from "./Post/Post";
 import style from "./MyPosts.module.css"
+import {Field, reduxForm} from "redux-form";
 
 const MyPosts = (props) => {
-    let postElements = props.posts.map(post => <Post message={post.message}/>);
+    let postElements = props.posts.map(post => <Post key={post.id} message={post.message}/>);
 
-    let onAddPost = () => {
-        props.addPost();
-    };
-
-    let onPostChange = (e) => {
-        let text = e.currentTarget.value;
-        props.updateNewPostText(text);
+    let addPost = (formData) => {
+        props.addPost(formData.newPostText);
     };
 
     return (
         <div>
             <div className={style.createPost}>
                 <div className={style.headOfNewPost}>What's new</div>
-                    <textarea
-                        className={style.newPost}
-                        placeholder="Share your status..."
-                        onChange={onPostChange}
-                        value={props.newPostText}
-                    />
-                <button onClick={onAddPost} className={style.sendButton}>Send</button>
+                <AddPostReduxForm onSubmit={addPost}/>
             </div>
             {postElements};
         </div>
     )
 };
+
+const AddPostForm = (props) => {
+    return (
+        <form onSubmit={props.handleSubmit}>
+                <Field
+                    name={"newPostText"}
+                    component={"textarea"}
+                    className={style.newPost}
+                    placeholder="Share your status..."
+                />
+            <button className={style.sendButton}>Send</button>
+        </form>
+    )
+};
+
+const AddPostReduxForm = reduxForm({form: 'newPost'})(AddPostForm);
+
 
 export default MyPosts
