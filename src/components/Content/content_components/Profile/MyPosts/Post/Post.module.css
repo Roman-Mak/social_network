@@ -1,7 +1,7 @@
 .post{
     align-self: flex-end;
     margin-top: 20px;
-    margin-left: 30px;
+    /*margin-left: 30px;*/
     width: 400px;
     background-color: whitesmoke;
     display: flex;
@@ -32,4 +32,5 @@
 .messageArea {
     height: 50px;
     border: 1px solid darkgrey;
+    background-color: #ffffff;
 }

@@ -7,7 +7,7 @@ import ProfileStatus from "./ProfileStatus";
 
 const ProfileInfo = (props) => {
     if (!props.profile) {
-       return <Preloader/>
+        return <Preloader/>
     }
 
     let ava = props.profile.photos.large;
@@ -29,15 +29,22 @@ const ProfileInfo = (props) => {
         //     </div>
         // </div>
         <div className={style.profileInfo}>
-            <img className={style.head_img} src={head_img}/>
+            {/*<img className={style.head_img} src={head_img}/>*/}
             <div className={style.information}>
-                <img className={style.avatar} src={ava}/>
                 <div className={style.description}>
-                    <div className={style.name}>{props.profile.fullName}</div>
-                    <div>City: Minsk</div>
-                    <div>{props.profile.contacts.facebook}/</div>
-                    <div>{props.profile.aboutMe}</div>
-                    <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
+                    <div className={style.profilePreview}>
+                        <img className={style.avatar} src={ava}/>
+                        <h3 className={style.name}>{props.profile.fullName}</h3>
+                    </div>
+                    <div className={style.status}>
+                        <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
+                    </div>
+                    <div className={style.about}>
+                        <div>About</div>
+                        <div>City: Minsk</div>
+                        <div>{props.profile.contacts.facebook}/</div>
+                        {/*<div>{props.profile.aboutMe}</div>*/}
+                    </div>
                 </div>
             </div>
         </div>

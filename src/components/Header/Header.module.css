@@ -1,19 +1,32 @@
 .header {
     grid-area: h;
     /*background-color: #26a69a;*/
-    background-color: cornflowerblue;
+    /*background-color: #26a69a;*/
+    background-color: #4687ce;
+    border-right: 1px solid #e2e9e6;
+    border-top: 1px solid #e2e9e6;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.brand {
+    width: 222px;
+    height: 100%;
+    border-right: 1px solid gainsboro;
 }
 
 .logo {
-    height: 50px;
-    width: 50px;
+    height: 30px;
+    width: 30px;
 }
 
 .login {
     float: right;
     font-size: 20px;
+    color: black;
 }
 
 .login a {
-    color: blanchedalmond;
+    color: black;
 }

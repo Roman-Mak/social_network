@@ -1,8 +1,18 @@
+.myPosts {
+    margin-left: 100px;
+    margin-top: 10px;
+}
+
+.head_img {
+    width: 500px;
+    height: 200px;
+    margin-bottom: 30px;
+}
+
 .createPost {
     display: flex;
     flex-direction: column;
-    margin-top: 20px;
-    margin-left: 30px;
+    /*margin-left: 30px;*/
     background-color: whitesmoke;
     width: 400px;
 }
@@ -14,7 +24,7 @@
 }
 
 .newPost {
-    background-color: whitesmoke;
+    background-color: #ffffff;
     height: 50px;
     width: 99%;
 }
