@@ -17,7 +17,7 @@ export const Input = ({input, meta, ...props}) => {
     const hasError = touched && error;
     return (
         <div className={style.formContorl + " " + (hasError ? style.error : "" )}>
-            <textarea  {...input} {...props}/>
+            <input  {...input} {...props}/>
             <div>{hasError && <span>{error}</span>}</div>
         </div>
     )
