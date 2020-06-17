@@ -19,7 +19,7 @@ const Header = (props) => {
                             <button onClick={props.userLogout}>Log Out</button>
                         </div>
                     </div>
-                    : <NavLink to={"/login"}>Login</NavLink>}
+                    : <button><NavLink to={"/login"}>Sign In</NavLink></button>}
             </div>
         </header>
     )

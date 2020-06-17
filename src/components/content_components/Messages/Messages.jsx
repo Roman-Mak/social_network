@@ -4,8 +4,8 @@ import Dialog from "./Dialog/Dialog";
 import Chat from "./Chat/Chat";
 import {Route} from "react-router-dom";
 import {Field, reduxForm} from "redux-form";
-import {Textarea} from "../../../common/FormsControls/FormsControl";
-import {maxLength, required} from "../../../../utils/vallidators";
+import {Textarea} from "../../common/FormsControls/FormsControl";
+import {maxLength, required} from "../../../utils/vallidators";
 
 const Messages = (props) => {
     let dialogsElement = props.dialogs.map(dialog => <Dialog key={dialog.id} name={dialog.name} id={dialog.id}/>);

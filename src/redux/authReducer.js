@@ -1,4 +1,5 @@
 import {authAPI} from "../api/api";
+import {stopSubmit} from "redux-form";
 
 const SET_USER_LOGIN_DATA = "SET-USER-LOGIN-DATA";
 const TOGGLE_IS_AUTH = "TOGGLE-IS-AUTH";
@@ -26,7 +27,7 @@ export const setUserLoginData = (userId, email, login) => ({type: SET_USER_LOGIN
 export const toggleIsAuth = (isAuth) => ({type: TOGGLE_IS_AUTH, isAuth});
 
 export const getUserLoginData = () => (dispatch) => {
-    authAPI.authMe()
+    return authAPI.authMe()
         .then(data => {
             if (data.resultCode === 0) {
                 if (data.messages[0] !== "You are not authorized") {
@@ -42,6 +43,9 @@ export const userLogin = (email, password, rememberMe) => (dispatch) => {
         .then(data => {
             if (data.resultCode === 0) {
                     dispatch(getUserLoginData());
+            } else {
+                let message = data.messages.length > 0 ? data.messages[0] : "some error";
+                dispatch(stopSubmit("login", {_error: message}))
             }
         });
 };

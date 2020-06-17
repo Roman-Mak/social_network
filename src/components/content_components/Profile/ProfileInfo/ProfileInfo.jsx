@@ -1,8 +1,8 @@
 import style from "./ProfileInfo.module.css";
-import head_img from "../../../../../assets/images/headimg.jpg";
-import avatar from "../../../../../assets/images/wolf.jpg";
+import head_img from "../../../../assets/images/headimg.jpg";
+import avatar from "../../../../assets/images/wolf.jpg";
 import React from "react";
-import Preloader from "../../../../common/Preloader/Preloader";
+import Preloader from "../../../common/Preloader/Preloader";
 import ProfileStatus from "./ProfileStatus";
 
 const ProfileInfo = (props) => {

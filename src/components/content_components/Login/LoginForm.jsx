@@ -1,10 +1,11 @@
 import React from "react";
 import {Field, reduxForm} from "redux-form";
-import {Input} from "../../../common/FormsControls/FormsControl";
-import {required} from "../../../../utils/vallidators";
+import {Input} from "../../common/FormsControls/FormsControl";
+import {required} from "../../../utils/vallidators";
 
 const LoginForm = (props) => {
-    const { handleSubmit } = props;
+    const { handleSubmit, error } = props;
+
     return (
         <form onSubmit={handleSubmit}>
             <div>
@@ -18,6 +19,7 @@ const LoginForm = (props) => {
                 <span>remember me</span>
             </div>
             <button>Sign In</button>
+            {error && <div style={{color: "red"}}>{error}</div>}
         </form>
     )
 };

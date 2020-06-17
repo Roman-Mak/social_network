@@ -1,9 +1,9 @@
 import React from "react";
 import {connect} from "react-redux";
 import Users from "./Users";
-import {setCurrentPage, getUsers, followUser, unfollowUser} from "../../../../redux/usersReducer";
-import Preloader from "../../../common/Preloader/Preloader";
-import {withAuthRedirect} from "../../../../hoc/withAuthRedirect";
+import {setCurrentPage, getUsers, followUser, unfollowUser} from "../../../redux/usersReducer";
+import Preloader from "../../common/Preloader/Preloader";
+import {withAuthRedirect} from "../../../hoc/withAuthRedirect";
 import {compose} from "redux";
 
 class UsersContainer extends React.Component {

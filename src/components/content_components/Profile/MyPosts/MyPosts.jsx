@@ -1,10 +1,10 @@
 import React from "react";
 import Post from "./Post/Post";
-import head_img from "../../../../../assets/images/headimg.jpg";
+import head_img from "../../../../assets/images/headimg.jpg";
 import style from "./MyPosts.module.css"
 import {Field, reduxForm} from "redux-form";
-import {maxLength, required} from "../../../../../utils/vallidators";
-import {Textarea} from "../../../../common/FormsControls/FormsControl";
+import {maxLength, required} from "../../../../utils/vallidators";
+import {Textarea} from "../../../common/FormsControls/FormsControl";
 
 const MyPosts = (props) => {
     let postElements = props.posts.map(post => <Post key={post.id} message={post.message}/>);
