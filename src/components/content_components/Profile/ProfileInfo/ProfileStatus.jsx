@@ -1,15 +1,15 @@
 import React, {useEffect, useState} from "react";
 
 const ProfileStatus = (props) => {
-    let [editMode, changeEditMode] = useState(false);
-    let [statusText, changeStatusText] = useState(props.status);
+    const [editMode, setEditMode] = useState(false);
+    const [statusText, changeStatusText] = useState(props.status);
 
-    let onChangeStatusText = (e) => {
+    const onChangeStatusText = (e) => {
         changeStatusText(e.currentTarget.value)
     };
 
-    let updateStatus = () => {
-        changeEditMode(false);
+    const updateStatus = () => {
+        setEditMode(false);
         props.updateStatus(statusText)
     };
 
@@ -18,7 +18,7 @@ const ProfileStatus = (props) => {
     return (
         <div>
             {!editMode
-                ? <span onDoubleClick={() => {changeEditMode(true)}}>{statusText || "change status"}</span>
+                ? <span onDoubleClick={() => {setEditMode(true)}}>{statusText || "change status"}</span>
                 : <input value={statusText}
                          onBlur={updateStatus}
                          autoFocus={true}
