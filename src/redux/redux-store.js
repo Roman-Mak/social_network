@@ -1,7 +1,7 @@
 import {applyMiddleware, combineReducers, createStore} from "redux";
 import profileReducer from "./profileReducer";
 import messagesReducer from "./messagesReducer";
-import usersReducer from "./usersReducer";
+import usersReducer from "./users/usersReducer";
 import authReducer from "./authReducer";
 import thunkMiddleware from "redux-thunk";
 import { reducer as formReducer } from 'redux-form'

@@ -1,4 +1,4 @@
-import {usersAPI} from "../api/api";
+import {usersAPI} from "../../api/api";
 
 const FOLLOW = "FOLLOWED";
 const UNFOLLOW = "UNFOLLOWED";
@@ -63,7 +63,7 @@ export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, current
 export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching});
 export const toggleFollowingInProcess = (isFetching, userId) => ({type: TOGGLE_FOLLOWING_IN_PROCESS, isFetching, userId});
 
-export const getUsers = (currentPage, pageSize) => {
+export const requestUsers = (currentPage, pageSize) => {
     return (dispatch) => {
         dispatch(setCurrentPage(currentPage));
         dispatch(toggleIsFetching(true));
