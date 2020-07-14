@@ -4,12 +4,14 @@ import {NavLink} from "react-router-dom";
 
 const User = (props) => {
     return (
-        <div>
-            <div>
+        <div className={style.user}>
+            <div className={style.avatar}>
                 <NavLink to={`/profile/${props.user.id}`}>
                 <img className={style.img} alt={"user"}
                      src={props.user.photos.small !== null ? props.user.photos.small :"https://blog.cpanel.com/wp-content/uploads/2019/08/user-01.png"}/>
                 </NavLink>
+                <span>{props.user.name}</span>
+                <span>{props.user.status}</span>
                 {
                     props.user.followed
                         ? <button disabled={props.followingInProcess.some(id => id === props.user.id)}
@@ -17,14 +19,6 @@ const User = (props) => {
                         : <button disabled={props.followingInProcess.some(id => id === props.user.id)}
                                 onClick={() => {props.followUser(props.user.id)}}>follow</button>
                 }
-            </div>
-            <div>
-                <div>
-                    <span>{props.user.name}</span>
-                    <span>{props.user.status}</span>
-                </div>
-                <span>{"props.user.country"}</span>
-                <span>{"props.user.city"}</span>
             </div>
         </div>
     )
