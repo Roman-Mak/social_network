@@ -7,8 +7,8 @@ const User = (props) => {
         <div>
             <div>
                 <NavLink to={`/profile/${props.user.id}`}>
-                <img className={style.img}
-                     src={props.user.photos.small !== null ? props.user.photos.small :"https://pbs.twimg.com/profile_images/1030941554763096065/clDF9QRY.jpg"}/>
+                <img className={style.img} alt={"user"}
+                     src={props.user.photos.small !== null ? props.user.photos.small :"https://blog.cpanel.com/wp-content/uploads/2019/08/user-01.png"}/>
                 </NavLink>
                 {
                     props.user.followed
