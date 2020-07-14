@@ -1,5 +1,4 @@
-const ADD_MESSAGE = "ADD-MESSAGE";
-const DELETE_DIALOG = "DELETE-DIALOG";
+import messagesReducer, {addMessage, deleteDialog} from "./messagesReducer";
 
 let initialState = {
     dialogs: [
@@ -61,21 +60,17 @@ let initialState = {
     messageText: ""
 };
 
-const messagesReducer = (state = initialState, action) => {
-    switch (action.type) {
-        case ADD_MESSAGE:
-            // let newMessage = {message: action.newMessageText, id: "4"};
-            // let stateCopy = {...state};
-            // stateCopy.dialogs[0].chats = [...state.dialogs[0].chats, newMessage];
-            // return stateCopy;
-            return {...state, messageText: action.newMessageText};
-        case DELETE_DIALOG:
-            return {...state, dialogs: state.dialogs.filter(d => d.id !== action.dialogId)};
-        default: return state;
-    }
-};
 
-export const addMessage = (newMessageText) => ({type: ADD_MESSAGE, newMessageText});
-export const deleteDialog = (dialogId) => ({type: DELETE_DIALOG, dialogId});
+test("message should be correct", () => {
+    let action = addMessage("Roma");
+    let newState = messagesReducer(initialState, action);
 
-export default messagesReducer;
+    expect(newState.messageText).toBe("Roma");
+});
+
+test("length of dialogs should be smaller", () => {
+    let action = deleteDialog("5");
+    let newState = messagesReducer(initialState, action);
+
+    expect(newState.dialogs.length).toBe(5);
+});
