@@ -1,5 +1,5 @@
-const ADD_MESSAGE = "ADD-MESSAGE";
-const DELETE_DIALOG = "DELETE-DIALOG";
+const ADD_MESSAGE = "socialNetwork/messageReducer/ADD-MESSAGE";
+const DELETE_DIALOG = "socialNetwork/messageReducer/DELETE-DIALOG";
 
 let initialState = {
     dialogs: [

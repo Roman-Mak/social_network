@@ -1,8 +1,8 @@
 import {authAPI} from "../api/api";
 import {stopSubmit} from "redux-form";
 
-const SET_USER_LOGIN_DATA = "SET-USER-LOGIN-DATA";
-const TOGGLE_IS_AUTH = "TOGGLE-IS-AUTH";
+const SET_USER_LOGIN_DATA = "socialNetwork/authReducer/SET-USER-LOGIN-DATA";
+const TOGGLE_IS_AUTH = "socialNetwork/authReducer/TOGGLE-IS-AUTH";
 
 
 let initialState = {
@@ -23,40 +23,37 @@ const authReducer = (state = initialState, action) => {
     }
 };
 
-export const setUserLoginData = (userId, email, login) => ({type: SET_USER_LOGIN_DATA, payload: {userId, email, login}});
+export const setUserLoginData = (userId, email, login) => ({
+    type: SET_USER_LOGIN_DATA,
+    payload: {userId, email, login}
+});
 export const toggleIsAuth = (isAuth) => ({type: TOGGLE_IS_AUTH, isAuth});
 
-export const getUserLoginData = () => (dispatch) => {
-    return authAPI.authMe()
-        .then(data => {
-            if (data.resultCode === 0) {
-                if (data.messages[0] !== "You are not authorized") {
-                    let {id, email, login} = data.data;
-                    dispatch(setUserLoginData(id, email, login));
-                    dispatch(toggleIsAuth(true));
-                }
-            }
-        });
+export const getUserLoginData = () => async (dispatch) => {
+    const data = await authAPI.authMe();
+    if (data.resultCode === 0) {
+        if (data.messages[0] !== "You are not authorized") {
+            let {id, email, login} = data.data;
+            dispatch(setUserLoginData(id, email, login));
+            dispatch(toggleIsAuth(true));
+        }
+    }
 };
-export const userLogin = (email, password, rememberMe) => (dispatch) => {
-    authAPI.authLogin(email, password, rememberMe)
-        .then(data => {
-            if (data.resultCode === 0) {
-                    dispatch(getUserLoginData());
-            } else {
-                let message = data.messages.length > 0 ? data.messages[0] : "some error";
-                dispatch(stopSubmit("login", {_error: message}))
-            }
-        });
+export const userLogin = (email, password, rememberMe) => async (dispatch) => {
+    const data = await authAPI.authLogin(email, password, rememberMe);
+    if (data.resultCode === 0) {
+        dispatch(getUserLoginData());
+    } else {
+        let message = data.messages.length > 0 ? data.messages[0] : "some error";
+        dispatch(stopSubmit("login", {_error: message}))
+    }
 };
-export const userLogout = () => (dispatch) => {
-    authAPI.authLogout()
-        .then(data => {
-            if (data.resultCode === 0) {
-                dispatch(setUserLoginData(null, null, null));
-                dispatch(toggleIsAuth(false));
-            }
-        });
+export const userLogout = () => async (dispatch) => {
+    const data = await authAPI.authLogout();
+    if (data.resultCode === 0) {
+        dispatch(setUserLoginData(null, null, null));
+        dispatch(toggleIsAuth(false));
+    }
 };
 
 export default authReducer;
