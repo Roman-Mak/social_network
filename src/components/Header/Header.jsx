@@ -3,26 +3,29 @@ import logo from '../../img/lion.jpg'
 import style from './Header.module.css'
 import {NavLink} from "react-router-dom";
 import avatar from "../../assets/images/wolf.jpg"
+import {LOGIN_PATH} from "../Routes/Routes";
 
-const Header = (props) => {
+const Header = ({isAuth, login, userLogout}) => {
     return (
         <header className={style.header}>
             <div className={style.brand}>Social Network
-                <img className={style.logo} src={logo}/>
+                <img className={style.logo} src={logo} alt={""}/>
             </div>
             <div className={style.login}>
-                {props.isAuth
-                    ? <div className={style.loginBlock}>
-                        <img className={style.avatar} src={avatar}/>
-                        <div>
-                            <div>{props.login}</div>
-                            <button onClick={props.userLogout}>Log Out</button>
+                {
+                    isAuth
+                        ? <div className={style.loginBlock}>
+                            <img className={style.avatar} src={avatar} alt={""}/>
+                            <div>
+                                <div>{login}</div>
+                                <button onClick={userLogout}>Log Out</button>
+                            </div>
                         </div>
-                    </div>
-                    : <button><NavLink to={"/login"}>Sign In</NavLink></button>}
+                        : <button><NavLink to={LOGIN_PATH}>Sign In</NavLink></button>
+                }
             </div>
         </header>
-    )
+    );
 };
 
 export default Header;

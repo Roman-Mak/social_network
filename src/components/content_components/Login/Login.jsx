@@ -3,17 +3,16 @@ import LoginForm from "./LoginForm";
 import {connect} from "react-redux";
 import {userLogin} from "../../../redux/authReducer";
 import {Redirect} from "react-router-dom";
+import {PROFILE_PATH} from "../../Routes/Routes";
 
-const Login = (props) => {
-    const { isAuth, userLogin } = props;
-
+const Login = ({isAuth, userLogin}) => {
     const onSubmit = (formData) => {
         const { email, password, rememberMe } = formData;
         userLogin(email, password, rememberMe);
     };
 
     if (isAuth) {
-        return <Redirect to={"/profile"}/>
+        return <Redirect to={PROFILE_PATH}/>
     }
 
     return (
@@ -21,7 +20,7 @@ const Login = (props) => {
             <h1>Sign In</h1>
             <LoginForm onSubmit={onSubmit}/>
         </div>
-    )
+    );
 };
 
 const mapStateToProps = (state) => {

@@ -2,7 +2,7 @@ import avatar from "../../../../../assets/images/wolf.jpg"
 import React from "react";
 import style from "./Post.module.css"
 
-const Post = (props) => {
+const Post = ({message}) => {
     return (
         <div className={style.post}>
             <div className={style.header}>
@@ -13,7 +13,7 @@ const Post = (props) => {
                 </div>
             </div>
             <div className={style.messageArea}>
-                <span>{props.message}</span>
+                <span>{message}</span>
             </div>
         </div>
     )

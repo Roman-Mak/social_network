@@ -6,31 +6,31 @@ import {Field, reduxForm} from "redux-form";
 import {maxLength, required} from "../../../../utils/vallidators";
 import {Textarea} from "../../../common/FormsControls/FormsControl";
 
-const MyPosts = (props) => {
-    let postElements = props.posts.map(post => <Post key={post.id} message={post.message}/>);
+const MyPosts = ({posts, addPost}) => {
+    let postElements = posts.map(post => <Post key={post.id} message={post.message}/>);
 
-    let addPost = (formData) => {
-        props.addPost(formData.newPostText);
+    let onAddPostSubmit = (formData) => {
+        addPost(formData.newPostText);
     };
 
     return (
         <div className={style.myPosts}>
-            <img className={style.head_img} src={head_img}/>
-            <img className={style.head_img} src={head_img}/>
+            <img className={style.head_img} src={head_img} alt={""}/>
+            <img className={style.head_img} src={head_img} alt={""}/>
             <div className={style.createPost}>
                 <div className={style.headOfNewPost}>What's new</div>
-                <AddPostReduxForm onSubmit={addPost}/>
+                <AddPostReduxForm onSubmit={onAddPostSubmit}/>
             </div>
             {postElements}
         </div>
-    )
+    );
 };
 
 const maxLength20 = maxLength(20);
 
-const AddPostForm = (props) => {
+const AddPostForm = ({handleSubmit}) => {
     return (
-        <form onSubmit={props.handleSubmit}>
+        <form onSubmit={handleSubmit}>
                 <Field
                     name={"newPostText"}
                     component={Textarea}
@@ -40,7 +40,7 @@ const AddPostForm = (props) => {
                 />
             <button className={style.sendButton}>Send</button>
         </form>
-    )
+    );
 };
 
 const AddPostReduxForm = reduxForm({form: 'newPost'})(AddPostForm);

@@ -4,7 +4,6 @@ import {stopSubmit} from "redux-form";
 const SET_USER_LOGIN_DATA = "socialNetwork/authReducer/SET-USER-LOGIN-DATA";
 const TOGGLE_IS_AUTH = "socialNetwork/authReducer/TOGGLE-IS-AUTH";
 
-
 let initialState = {
     userId: null,
     email: null,

@@ -5,12 +5,12 @@ import React from "react";
 import Preloader from "../../../common/Preloader/Preloader";
 import ProfileStatus from "./ProfileStatus";
 
-const ProfileInfo = (props) => {
-    if (!props.profile) {
+const ProfileInfo = ({profile, updateStatus, status}) => {
+    if (!profile) {
         return <Preloader/>
     }
 
-    let ava = props.profile.photos.large;
+    let ava = profile.photos.large;
     if (ava === null) {
         ava = avatar;
     }
@@ -34,15 +34,15 @@ const ProfileInfo = (props) => {
                 <div className={style.description}>
                     <div className={style.profilePreview}>
                         <img className={style.avatar} src={ava}/>
-                        <h3 className={style.name}>{props.profile.fullName}</h3>
+                        <h3 className={style.name}>{profile.fullName}</h3>
                     </div>
                     <div className={style.status}>
-                        <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
+                        <ProfileStatus status={status} updateStatus={updateStatus}/>
                     </div>
                     <div className={style.about}>
                         <div>About</div>
                         <div>City: Minsk</div>
-                        <div>{props.profile.contacts.facebook}/</div>
+                        <div>{profile.contacts.facebook}/</div>
                         {/*<div>{props.profile.aboutMe}</div>*/}
                     </div>
                 </div>
