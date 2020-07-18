@@ -25,7 +25,6 @@ class UsersContainer extends React.Component {
     render = () => {
         return (
             <>
-                {this.props.isFetching ? <Preloader/> : null}
                 <Users users={this.props.users}
                        pageSize={this.props.pageSize}
                        currentPage={this.props.currentPage}
@@ -35,6 +34,7 @@ class UsersContainer extends React.Component {
                        onPageChanged={this.onPageChanged}
                        followingInProcess={this.props.followingInProcess}
                 />
+                {this.props.isFetching ? <Preloader/> : null}
             </>
         )
     }

@@ -1,7 +1,29 @@
-.selectedPage {
-    font-weight: bold;
+.paginator {
+    padding-top: 25px;
+    padding-left: 12px;
 }
 
-.page {
+.selectedPage {
+    font-weight: bold;
+    background-color: #4687ce;
+}
 
+.selectedPage:hover {
+    cursor: default;
+}
+
+.page, .selectedPage {
+    border: 1px solid lightgrey;
+    padding: 3px;
+}
+
+.page:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.paginator button {
+    margin-left: 5px;
+    margin-right: 5px;
+    height: 25px;
 }

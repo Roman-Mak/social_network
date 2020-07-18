@@ -15,14 +15,20 @@ const Users = ({users, followUser, unfollowUser, followingInProcess,
             />
         });
         return (
-            <div>
-                <Paginator totalUsersCount={totalUsersCount}
+            <div className={style.usersPage}>
+                <Paginator totalItemsCount={totalUsersCount}
                            currentPage={currentPage}
                            pageSize={pageSize}
+                           portionCount={"10"}
                            onPageChanged={onPageChanged}/>
                 <div>
                     {usersList}
                 </div>
+                <Paginator totalItemsCount={totalUsersCount}
+                           currentPage={currentPage}
+                           pageSize={pageSize}
+                           portionCount={"10"}
+                           onPageChanged={onPageChanged}/>
             </div>
         )
 };
