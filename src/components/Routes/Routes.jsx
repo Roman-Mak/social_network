@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Suspense} from "react";
 import {Route, Switch, withRouter} from "react-router-dom";
 import ProfileContainer from "../content_components/Profile/ProfileContainer";
 // import MessagesContainer from "../content_components/Messages/MessagesContainer";
@@ -28,7 +28,7 @@ export const LOGIN_PATH = "/login";
 const Routes = () => {
     return (
         <div className="content">
-            <React.Suspense fallback={<Preloader/>}>
+            <Suspense fallback={<Preloader/>}>
                 <Switch>
                     <Route path={PROFILE_PATH + "/:userId?"} render={() => <ProfileContainer/>}/>
                     <Route path={MESSAGES_PATH} render={() => <MessagesContainer/>}/>
@@ -39,7 +39,7 @@ const Routes = () => {
                     <Route path={USERS_PATH} render={() => <UsersContainer/>}/>
                     <Route path={LOGIN_PATH} render={() => <Login/>}/>
                 </Switch>
-            </React.Suspense>
+            </Suspense>
         </div>
     );
 };
