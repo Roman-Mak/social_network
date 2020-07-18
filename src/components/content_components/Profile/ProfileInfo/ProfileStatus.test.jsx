@@ -57,4 +57,21 @@ describe("ProfileStatus component", () => {
         const input = instance.findByType("input");
         expect(input.props.value).toBe("this is my design");
     });
+    test("callback from props should be called", () => {
+        const mockCallback = jest.fn();
+        let component;
+        act(() => {
+            component = create(<ProfileStatus status="this is my design" updateStatus={mockCallback}/>);
+        });
+        const instance = component.root;
+        const span = instance.findByType("span");
+        act(() => {
+            span.props.onDoubleClick();
+        });
+        const input = instance.findByType("input");
+        act(() => {
+            input.props.onBlur();
+        });
+        expect(mockCallback.mock.calls.length).toBe(1);
+    });
 });
