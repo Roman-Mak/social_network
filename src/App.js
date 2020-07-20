@@ -18,16 +18,18 @@ class App extends React.Component {
         if (!this.props.initialized) {
             return <Preloader/>
         }
-            return (
-                <div className="app-wrapper">
-                    <HeaderContainer/>
+        return (
+            <div className="app-wrapper">
+                <HeaderContainer/>
+                <div className="content">
                     <Navbar/>
                     <Routes/>
                 </div>
-            );
+            </div>
+        );
     }
 }
 
 const mapStateToProps = (state) => ({initialized: state.app.initialized});
 
-export default compose(withRouter, connect(mapStateToProps, {initializeApp})) (App);
+export default compose(withRouter, connect(mapStateToProps, {initializeApp}))(App);

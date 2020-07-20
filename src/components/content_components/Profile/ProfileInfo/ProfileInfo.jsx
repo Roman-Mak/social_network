@@ -1,19 +1,25 @@
 import style from "./ProfileInfo.module.css";
 import head_img from "../../../../assets/images/headimg.jpg";
-import avatar from "../../../../assets/images/wolf.jpg";
+import userPhoto from "../../../../assets/images/user-01.png";
 import React from "react";
 import Preloader from "../../../common/Preloader/Preloader";
 import ProfileStatus from "./ProfileStatus";
 
-const ProfileInfo = ({profile, updateStatus, status}) => {
+const ProfileInfo = ({profile, updateStatus, status, isOwner, setPhoto}) => {
     if (!profile) {
         return <Preloader/>
     }
 
     let ava = profile.photos.large;
     if (ava === null) {
-        ava = avatar;
+        ava = userPhoto;
     }
+
+    const onPhotoChange = (e) => {
+        if (e.target.files.length) {
+            setPhoto(e.target.files[0]);
+        }
+    };
 
     return (
         // <div className={style.profileInfo}>
@@ -29,11 +35,12 @@ const ProfileInfo = ({profile, updateStatus, status}) => {
         //     </div>
         // </div>
         <div className={style.profileInfo}>
-            {/*<img className={style.head_img} src={head_img}/>*/}
+            <img className={style.head_img} src={head_img}/>
             <div className={style.information}>
                 <div className={style.description}>
                     <div className={style.profilePreview}>
                         <img className={style.avatar} src={ava}/>
+                        {isOwner && <input type={"file"} onChange={onPhotoChange}/>}
                         <h3 className={style.name}>{profile.fullName}</h3>
                     </div>
                     <div className={style.status}>

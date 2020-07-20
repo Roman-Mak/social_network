@@ -3,10 +3,11 @@ import style from "./Profile.module.css";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
-const Profile = ({profile, updateStatus, status}) => {
+const Profile = ({profile, updateStatus, status, isOwner, setPhoto}) => {
     return (
         <div className={style.profile}>
-            <ProfileInfo profile={profile} updateStatus={updateStatus} status={status}/>
+            <ProfileInfo isOwner={isOwner} profile={profile} updateStatus={updateStatus} status={status}
+                         setPhoto={setPhoto}/>
             <MyPostsContainer />
         </div>
     );

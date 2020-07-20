@@ -27,7 +27,7 @@ export const LOGIN_PATH = "/login";
 
 const Routes = () => {
     return (
-        <div className="content">
+        <div>
             <Suspense fallback={<Preloader/>}>
                 <Switch>
                     <Route path={PROFILE_PATH + "/:userId?"} render={() => <ProfileContainer/>}/>

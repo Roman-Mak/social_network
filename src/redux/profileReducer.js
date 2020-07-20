@@ -4,6 +4,7 @@ const ADD_POST = "socialNetwork/profileReducer/ADD-POST";
 const SET_USER_PROFILE = "socialNetwork/profileReducer/SET-USER-PROFILE";
 const UPDATE_STATUS = "socialNetwork/profileReducer/UPDATE-STATUS";
 const GET_STATUS = "socialNetwork/profileReducer/GET-STATUS";
+const SET_PHOTO = "socialNetwork/profileReducer/SET-PHOTO";
 
 let initialState = {
     posts: [
@@ -32,28 +33,37 @@ const profileReducer = (state = initialState, action) => {
             return {...state, status: action.status};
         case UPDATE_STATUS:
             return {...state, status: action.status};
+        case SET_PHOTO:
+            return {...state, profile: {...state.profile, photos: action.photos}};
         default:
             return state;
     }
 };
 
 export const addPost = (newPostText) => ({type: ADD_POST, newPostText});
-export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile});
-export const updateStatusAC = (status) => ({type: UPDATE_STATUS, status});
-export const getUserStatusAC = (status) => ({type: GET_STATUS, status});
+export const getUserProfileSuccess = (profile) => ({type: SET_USER_PROFILE, profile});
+export const updateStatusSuccess = (status) => ({type: UPDATE_STATUS, status});
+export const getUserStatusSuccess = (status) => ({type: GET_STATUS, status});
+export const setPhotoSuccess = (photos) => ({type: SET_PHOTO, photos});
 
 export const getUserProfile = (userId) => async (dispatch) => {
     const data = await profileAPI.getUserProfile(userId);
-    dispatch(setUserProfile(data));
+    dispatch(getUserProfileSuccess(data));
 };
 export const getUserStatus = (userId) => async (dispatch) => {
     const data = await profileAPI.getUserStatus(userId);
-    dispatch(getUserStatusAC(data.data));
+    dispatch(getUserStatusSuccess(data));
 };
 export const updateStatus = (status) => async (dispatch) => {
     const data = await profileAPI.updateStatus(status);
-    if (data.data.resultCode === 0) {
-        dispatch(updateStatusAC(status));
+    if (data.resultCode === 0) {
+        dispatch(updateStatusSuccess(status));
+    }
+};
+export const setPhoto = (image) => async (dispatch) => {
+    const res = await profileAPI.setPhoto(image);
+    if (res.resultCode === 0) {
+        dispatch(setPhotoSuccess(res.data.photos));
     }
 };
 

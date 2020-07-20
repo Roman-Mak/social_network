@@ -15,8 +15,8 @@ const MyPosts = ({posts, addPost}) => {
 
     return (
         <div className={style.myPosts}>
-            <img className={style.head_img} src={head_img} alt={""}/>
-            <img className={style.head_img} src={head_img} alt={""}/>
+            {/*<img className={style.head_img} src={head_img} alt={""}/>*/}
+            {/*<img className={style.head_img} src={head_img} alt={""}/>*/}
             <div className={style.createPost}>
                 <div className={style.headOfNewPost}>What's new</div>
                 <AddPostReduxForm onSubmit={onAddPostSubmit}/>

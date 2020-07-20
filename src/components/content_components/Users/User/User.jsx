@@ -1,6 +1,7 @@
 import React from "react";
 import style from "./User.module.css"
 import {NavLink} from "react-router-dom";
+import userPhoto from "./../../../../assets/images/user-01.png"
 
 const User = ({user, followingInProcess, unfollowUser, followUser}) => {
     return (
@@ -10,7 +11,7 @@ const User = ({user, followingInProcess, unfollowUser, followUser}) => {
                     <img className={style.img} alt={"user"}
                          src={user.photos.small !== null
                              ? user.photos.small
-                             : "https://blog.cpanel.com/wp-content/uploads/2019/08/user-01.png"}/>
+                             : userPhoto}/>
                 </NavLink>
                 <span>{user.name}</span>
                 <span>{user.status}</span>
