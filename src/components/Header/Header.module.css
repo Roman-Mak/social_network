@@ -1,7 +1,8 @@
 .header {
-    grid-area: h;
+    /*grid-area: h;*/
     /*background-color: #26a69a;*/
     /*background-color: #26a69a;*/
+    width: 100%;
     background-color: #4687ce;
     border-right: 1px solid #e2e9e6;
     border-top: 1px solid #e2e9e6;

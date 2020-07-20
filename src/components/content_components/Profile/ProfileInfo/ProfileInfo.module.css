@@ -14,11 +14,11 @@
 .avatar {
     height: 110px;
     width: 110px;
-    margin-top: 10px;
+    /*margin-top: 10px;*/
     /*margin-left: 30px;*/
     /*margin-top: 20px;*/
     border-radius: 50%;
-    border: 1px solid darkgrey;
+    /*border: 1px solid darkgrey;*/
 }
 
 .head_img {

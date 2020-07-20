@@ -49,12 +49,26 @@ const ProfileInfo = ({profile, updateStatus, status, isOwner, setPhoto}) => {
                     <div className={style.about}>
                         <div>About</div>
                         <div>City: Minsk</div>
-                        <div>{profile.contacts.facebook}/</div>
+                        {/*<div>{profile.contacts.facebook}/</div>*/}
                         {/*<div>{props.profile.aboutMe}</div>*/}
+                    </div>
+                    <div className={style.about}>
+                        <div>Contacts</div>
+                        {Object.keys(profile.contacts).map(key => {
+                            return <Contact key={key} contactKey={key} contactValue={profile.contacts[key]}/>
+                        })}
                     </div>
                 </div>
             </div>
         </div>
+    )
+};
+
+const Contact = ({contactKey, contactValue}) => {
+    const contact = contactValue ? contactValue : "not specified";
+    const key = contactKey[0].toUpperCase() + contactKey.slice(1);
+    return (
+        <div>{`${key}: ${contact}`}</div>
     )
 };
 
