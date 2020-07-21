@@ -8,7 +8,7 @@ import {PROFILE_PATH} from "../../Routes/Routes";
 
 const Login = ({isAuth, userLogin}) => {
     const onSubmit = (formData) => {
-        const { email, password, rememberMe } = formData;
+        const {email, password, rememberMe} = formData;
         userLogin(email, password, rememberMe);
     };
 
@@ -17,10 +17,17 @@ const Login = ({isAuth, userLogin}) => {
     }
 
     return (
-        <div className={style.login}>
-            <h1>Sign In</h1>
-            <LoginForm onSubmit={onSubmit}/>
-        </div>
+        <>
+            <div className={style.login}>
+                <h1>Sign In</h1>
+                <LoginForm onSubmit={onSubmit}/>
+            </div>
+            <div>
+                <div>Test account</div>
+                <div>Email: free@samuraijs.com</div>
+                <div>Password: free</div>
+            </div>
+        </>
     );
 };
 

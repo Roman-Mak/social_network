@@ -1,4 +1,4 @@
-import avatar from "../../../../../assets/images/wolf.jpg"
+import avatar from "../../../../../assets/images/user-01.png"
 import React from "react";
 import style from "./Post.module.css"
 
