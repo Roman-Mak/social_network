@@ -1,5 +1,4 @@
 import style from "./ProfileInfo.module.css";
-import head_img from "../../../../assets/images/headimg.jpg";
 import userPhoto from "../../../../assets/images/user-01.png";
 import React from "react";
 import Preloader from "../../../common/Preloader/Preloader";
@@ -27,7 +26,7 @@ const ProfileInfo = ({profile, updateStatus, status, isOwner, setPhoto}) => {
             <div className={style.informationContainer}>
                 {/*<div className={style.description}>*/}
                     <div className={style.profilePreview}>
-                        <img className={style.avatar} src={ava}/>
+                        <img className={style.avatar} src={ava} alt={""}/>
                         {isOwner && <label><input type={"file"} onChange={onPhotoChange}/>Edit photo</label>}
                     </div>
                 {/*</div>*/}

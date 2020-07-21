@@ -4,7 +4,7 @@ import React from "react";
 const Preloader = (props) => {
     return (
     <>
-        <img src={preloader}/>
+        <img src={preloader} alt={"Loading..."}/>
     </>
     )
 };

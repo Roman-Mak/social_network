@@ -1,6 +1,5 @@
 import React from "react";
 import Post from "./Post/Post";
-import head_img from "../../../../assets/images/headimg.jpg";
 import style from "./MyPosts.module.css"
 import {Field, reduxForm} from "redux-form";
 import {maxLength, required} from "../../../../utils/vallidators";
@@ -15,8 +14,6 @@ const MyPosts = ({posts, addPost}) => {
 
     return (
         <div className={style.myPosts}>
-            {/*<img className={style.head_img} src={head_img} alt={""}/>*/}
-            {/*<img className={style.head_img} src={head_img} alt={""}/>*/}
             <div className={style.createPost}>
                 <div className={style.headOfNewPost}>What's new</div>
                 <AddPostReduxForm onSubmit={onAddPostSubmit}/>
