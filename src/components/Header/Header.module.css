@@ -3,7 +3,7 @@
     /*background-color: #26a69a;*/
     /*background-color: #26a69a;*/
     width: 100%;
-    background-color: #4687ce;
+    background-color: #088dcd;
     border-right: 1px solid #e2e9e6;
     border-top: 1px solid #e2e9e6;
     height: 50px;
@@ -15,6 +15,9 @@
     width: 222px;
     height: 100%;
     border-right: 1px solid gainsboro;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .logo {

@@ -1,15 +1,26 @@
-.user {
+.login {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 30px;
-    width: 250px;
-    height: 250px;
+    margin-top: 50px;
+    margin-left: 100px;
     background-color: #ffffff;
+    width: 300px;
 }
 
-.user button {
+.login div {
+  padding: 3px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form button {
     background-color: #088dcd;
     color: #ffffff;
     border: none;
@@ -19,28 +30,21 @@
     border-radius: 4px;
 }
 
-.user button:hover {
+.form button:hover {
     cursor: pointer;
     background-color: #086393;
 }
 
-.user button:disabled {
+.form button:disabled {
     opacity: 0.5;
 }
 
-.name {
-    padding: 10px;
+.form input {
+    height: 20px;
 }
 
-.img {
-    width: 140px;
-    height: 140px;
-    border-radius: 50%;
-}
-
-.avatar {
+.rememberMe {
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
 }

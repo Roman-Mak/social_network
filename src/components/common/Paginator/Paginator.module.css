@@ -1,11 +1,28 @@
 .paginator {
     padding-top: 25px;
-    padding-left: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.paginator button {
+    background-color: #088dcd;
+    color: #ffffff;
+    border: none;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 4px 20px;
+    border-radius: 4px;
+}
+
+.paginator button:hover {
+    cursor: pointer;
+    background-color: #086393;
 }
 
 .selectedPage {
     font-weight: bold;
-    background-color: #4687ce;
+    background-color: #088dcd;
 }
 
 .selectedPage:hover {
@@ -13,7 +30,7 @@
 }
 
 .page, .selectedPage {
-    border: 1px solid lightgrey;
+    border: 1px solid #e2e9e6;
     padding: 3px;
 }
 

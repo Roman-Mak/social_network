@@ -18,7 +18,7 @@ const ProfileStatus = ({status, updateStatus}) => {
     return (
         <div>
             {!editMode
-                ? <span onDoubleClick={() => {setEditMode(true)}}>{statusText || "change status"}</span>
+                ? <span onDoubleClick={() => {setEditMode(true)}}>{statusText || "no status"}</span>
                 : <input value={statusText}
                          onBlur={onUpdateStatusBlur}
                          autoFocus={true}

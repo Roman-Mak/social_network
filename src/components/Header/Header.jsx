@@ -1,8 +1,8 @@
 import React from "react";
-import logo from '../../img/lion.jpg'
+import logo from "../../assets/images/logo.png"
 import style from './Header.module.css'
 import {NavLink} from "react-router-dom";
-import avatar from "../../assets/images/wolf.jpg"
+import avatar from "../../assets/images/user-01.png"
 import {LOGIN_PATH} from "../Routes/Routes";
 
 const Header = ({isAuth, login, userLogout}) => {

@@ -13,7 +13,7 @@ const User = ({user, followingInProcess, unfollowUser, followUser}) => {
                              ? user.photos.small
                              : userPhoto}/>
                 </NavLink>
-                <span>{user.name}</span>
+                <span className={style.name}>{user.name}</span>
                 <span>{user.status}</span>
                 {
                     user.followed

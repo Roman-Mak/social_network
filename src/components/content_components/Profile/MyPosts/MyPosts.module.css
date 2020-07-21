@@ -1,12 +1,7 @@
 .myPosts {
-    margin-left: 100px;
-    margin-top: 10px;
-}
-
-.head_img {
-    width: 500px;
-    height: 200px;
-    margin-bottom: 30px;
+    /*margin-left: 100px;*/
+    /*margin-top: 10px;*/
+    border: 1px solid #e2e9e6;
 }
 
 .createPost {
@@ -18,7 +13,7 @@
 }
 
 .headOfNewPost {
-    background-color: #26a69a;
+    background-color: #088dcd;
     height: 30px;
     width: 100%;
 }
@@ -31,4 +26,16 @@
 
 .sendButton {
     align-self: flex-end;
+    background-color: #088dcd;
+    color: #ffffff;
+    border: none;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 4px 20px;
+    border-radius: 4px;
+}
+
+.sendButton:hover {
+    cursor: pointer;
+    background-color: #086393;
 }

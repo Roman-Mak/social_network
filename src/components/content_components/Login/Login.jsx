@@ -1,5 +1,6 @@
 import React from "react";
 import LoginForm from "./LoginForm";
+import style from "./Login.module.css";
 import {connect} from "react-redux";
 import {userLogin} from "../../../redux/authReducer";
 import {Redirect} from "react-router-dom";
@@ -16,7 +17,7 @@ const Login = ({isAuth, userLogin}) => {
     }
 
     return (
-        <div>
+        <div className={style.login}>
             <h1>Sign In</h1>
             <LoginForm onSubmit={onSubmit}/>
         </div>

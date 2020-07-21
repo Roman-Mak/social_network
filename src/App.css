@@ -19,11 +19,19 @@
 /*  margin-top: 5px;*/
 /*}*/
 .app-wrapper {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
+    background-color: #f4f4f4;
 }
 
 .content {
-  display: flex;
-  margin: 0 150px;
+    display: flex;
+    /*margin: 0 150px;*/
+}
+
+.app-preloader {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

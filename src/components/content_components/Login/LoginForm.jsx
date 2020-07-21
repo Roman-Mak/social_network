@@ -1,11 +1,12 @@
 import React from "react";
+import style from "./Login.module.css";
 import {Field, reduxForm} from "redux-form";
 import {Input} from "../../common/FormsControls/FormsControl";
 import {required} from "../../../utils/vallidators";
 
 const LoginForm = ({handleSubmit, error}) => {
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className={style.form}>
             <div>
                 <Field name={"email"} type={"email"} placeholder={"Login"}
                        component={Input} validate={[required]}/>
@@ -14,7 +15,7 @@ const LoginForm = ({handleSubmit, error}) => {
                 <Field name={"password"} type={"password"} placeholder={"Password"}
                        component={Input} validate={[required]}/>
             </div>
-            <div>
+            <div className={style.rememberMe}>
                 <Field name={"rememberMe"} type={"checkbox"} component={"input"}/>
                 <span>remember me</span>
             </div>

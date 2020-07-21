@@ -12,6 +12,7 @@ import {
     getPageSize,
     getTotalUsersCount, getUsers
 } from "../../../redux/users/usersSelectors";
+import style from "../Profile/ProfileInfo/ProfileInfo.module.css";
 
 class UsersContainer extends React.Component {
     componentDidMount() {
@@ -23,6 +24,9 @@ class UsersContainer extends React.Component {
     };
 
     render = () => {
+        if (this.props.isFetching) {
+            return <div className={style.profilePreloader}><Preloader/></div>
+        }
         return (
             <>
                 <Users users={this.props.users}
@@ -34,7 +38,6 @@ class UsersContainer extends React.Component {
                        onPageChanged={this.onPageChanged}
                        followingInProcess={this.props.followingInProcess}
                 />
-                {this.props.isFetching ? <Preloader/> : null}
             </>
         )
     }
