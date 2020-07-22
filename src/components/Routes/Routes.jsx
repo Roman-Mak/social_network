@@ -27,7 +27,7 @@ const Routes = () => {
                 <Switch>
                     <Route exact path="/" render={() => <Redirect to={PROFILE_PATH}/>}/>
                     <Route path={PROFILE_PATH + "/:userId?"} render={() => <ProfileContainer/>}/>
-                    <Route path={MESSAGES_PATH} render={() => <MessagesContainer/>}/>
+                    <Route path={MESSAGES_PATH + "/:userId?"} render={(props) => <MessagesContainer userId={props.match.params.userId}/>}/>
                     <Route path={FRIENDS_PATH} render={() => <Friends/>}/>
                     <Route path={NEWS_PATH} render={() => <News/>}/>
                     <Route path={MUSIC_PATH} render={() => <Music/>}/>

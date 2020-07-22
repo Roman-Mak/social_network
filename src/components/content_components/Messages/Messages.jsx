@@ -2,32 +2,36 @@ import React from "react";
 import style from "./Messages.module.css";
 import Dialog from "./Dialog/Dialog";
 import Chat from "./Chat/Chat";
-import {Route} from "react-router-dom";
 import {Field, reduxForm} from "redux-form";
 import {Textarea} from "../../common/FormsControls/FormsControl";
 import {maxLength, required} from "../../../utils/vallidators";
 
-const Messages = ({dialogs, addMessage, messageText}) => {
-    let dialogsElement = dialogs.map(dialog => <Dialog key={dialog.id} name={dialog.name} id={dialog.id}/>);
-    let chatsElement = dialogs.map(dialog => dialog.chats.map(chat => <Chat key={chat.id} message={chat.message}/>));
-    let chatsElementRoute = chatsElement.map((el, i) => {
-        return <Route path={`/messages/${i + 1}`} render={() => chatsElement[i]}/>
-    });
+const Messages = ({dialogs, messages, addMessage, messageText, selectedDialogId}) => {
+    const dialogsElements = dialogs.map(d => <Dialog key={d.id} name={d.userName} id={d.id}/>);
+    const messagesItems = messages.map(m => <Chat key={m.key} message={m.body} sender={m.senderName}/>);
+    // let chatsElement = dialogs.map(dialog => dialog.chats.map(chat => <Chat key={chat.id} message={chat.message}/>));
+    // let chatsElementRoute = chatsElement.map((el, i) => {
+    //     return <Route path={`/messages/${i + 1}`} render={() => chatsElement[i]}/>
+    // });
 
-    let sendNewMessage = (formData) => {
+    const sendNewMessage = (formData) => {
         addMessage(formData.newMessageText);
     };
 
     return (
         <div className={style.messages}>
             <div className={style.dialogs}>
-                {dialogsElement}
+                {dialogsElements}
             </div>
-            <div className={style.chats}>
-                {/*{chatsElementRoute}*/}
-                <div>{messageText}</div>
-                <AddMessageReduxForm onSubmit={sendNewMessage}/>
-            </div>
+            {
+                selectedDialogId
+                    ? <div className={style.chats}>
+                        {messagesItems}
+                        {/*<div>{messageText}</div>*/}
+                        <AddMessageReduxForm onSubmit={sendNewMessage}/>
+                    </div>
+                    : <div>Please select dialog</div>
+            }
         </div>
     )
 };
