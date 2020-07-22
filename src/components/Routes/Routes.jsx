@@ -1,11 +1,6 @@
 import React, {Suspense} from "react";
-import {Route, Switch, withRouter} from "react-router-dom";
+import {Redirect, Route, Switch, withRouter} from "react-router-dom";
 import ProfileContainer from "../content_components/Profile/ProfileContainer";
-// import MessagesContainer from "../content_components/Messages/MessagesContainer";
-// import Friends from "../content_components/Friends/Friends";
-// import News from "../content_components/News/News";
-// import Music from "../content_components/Music/Music";
-// import Settings from "../content_components/Settings/Settings";
 import UsersContainer from "../content_components/Users/UsersContainer";
 import Login from "../content_components/Login/Login";
 import Preloader from "../common/Preloader/Preloader";
@@ -30,6 +25,7 @@ const Routes = () => {
         <div>
             <Suspense fallback={<Preloader/>}>
                 <Switch>
+                    <Route exact path="/" render={() => <Redirect to={PROFILE_PATH}/>}/>
                     <Route path={PROFILE_PATH + "/:userId?"} render={() => <ProfileContainer/>}/>
                     <Route path={MESSAGES_PATH} render={() => <MessagesContainer/>}/>
                     <Route path={FRIENDS_PATH} render={() => <Friends/>}/>
