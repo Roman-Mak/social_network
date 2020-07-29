@@ -22,8 +22,9 @@ class MessagesContainer extends React.Component {
                          messages={this.props.messages}
                          sendMessage={this.props.sendMessage}
                          selectedDialogId={this.props.selectedDialogId}
-                         resetForm={this.props.reset}
-        />
+                         dialogsIsFetching={this.props.dialogsIsFetching}
+                         messagesIsFetching={this.props.messagesIsFetching}
+                         resetForm={this.props.reset}/>
     }
 }
 
@@ -31,7 +32,9 @@ const mapStateToProps = (state) => {
     return {
         dialogs: state.messagesPage.dialogs,
         messages: state.messagesPage.messages,
-        selectedDialogId: state.messagesPage.selectedDialogId
+        selectedDialogId: state.messagesPage.selectedDialogId,
+        dialogsIsFetching: state.messagesPage.dialogsIsFetching,
+        messagesIsFetching: state.messagesPage.messagesIsFetching
     }
 };
 

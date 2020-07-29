@@ -6,11 +6,15 @@ const PUT_UP_DIALOG = "socialNetwork/messageReducer/PUT-UP-DIALOG";
 const SET_CURRENT_DIALOG = "socialNetwork/messageReducer/SET-CURRENT-DIALOG";
 const GET_MESSAGES = "socialNetwork/messageReducer/GET-MESSAGES";
 const SEND_MESSAGE = "socialNetwork/messageReducer/SEND-MESSAGE";
+const DIALOGS_IS_FETCHING = "socialNetwork/messageReducer/DIALOGS-IS-FETCHING";
+const MESSAGES_IS_FETCHING = "socialNetwork/messageReducer/MESSAGES-IS-FETCHING";
 
 let initialState = {
     dialogs: [],
     messages: [],
     selectedDialogId: null,
+    dialogsIsFetching: false,
+    messagesIsFetching: false
 };
 
 const messagesReducer = (state = initialState, action) => {
@@ -30,6 +34,10 @@ const messagesReducer = (state = initialState, action) => {
             return {...state, selectedDialogId: action.userId};
         case DELETE_DIALOG:
             return {...state, dialogs: state.dialogs.filter(d => d.id !== action.dialogId)};
+        case DIALOGS_IS_FETCHING:
+            return {...state, dialogsIsFetching: action.isFetching};
+        case MESSAGES_IS_FETCHING:
+            return {...state, messagesIsFetching: action.isFetching};
         default:
             return state;
     }
@@ -41,13 +49,17 @@ const putUpDialog = (userId) => ({type: PUT_UP_DIALOG, userId});
 export const setCurrentDialog = (userId) => ({type: SET_CURRENT_DIALOG, userId});
 const getMessagesSuccess = (messages) => ({type: GET_MESSAGES, messages});
 const sendMessageSuccess = (message) => ({type: SEND_MESSAGE, message});
+const dialogsIsFetching = (isFetching) => ({type: DIALOGS_IS_FETCHING, isFetching});
+const messagesIsFetching = (isFetching) => ({type: MESSAGES_IS_FETCHING, isFetching});
 
 export const getDialogs = () => async (dispatch) => {
+    dispatch(dialogsIsFetching(true));
     try {
         let dialogs = await messagesAPI.getDialogs();
         dispatch(getDialogsSuccess(dialogs));
+        dispatch(dialogsIsFetching(false));
     } catch (e) {
-
+        dispatch(dialogsIsFetching(false));
     }
 };
 export const startDialog = (userId) => async (dispatch, getState) => {
@@ -61,11 +73,13 @@ export const startDialog = (userId) => async (dispatch, getState) => {
 };
 
 export const getMessages = (userId) => async (dispatch) => {
+    dispatch(messagesIsFetching(true));
     try {
         let result = await messagesAPI.getMessages(userId);
         dispatch(getMessagesSuccess(result.items));
+        dispatch(messagesIsFetching(false));
     } catch (e) {
-
+        dispatch(messagesIsFetching(false));
     }
 };
 

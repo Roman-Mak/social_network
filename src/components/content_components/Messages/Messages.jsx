@@ -4,8 +4,10 @@ import Dialog from "./Dialog/Dialog";
 import Chat from "./Chat/Chat";
 import {Field, reduxForm} from "redux-form";
 import {Textarea} from "../../common/FormsControls/FormsControl";
+import Preloader from "../../common/Preloader/Preloader";
 
-const Messages = ({dialogs, messages, sendMessage, selectedDialogId, resetForm}) => {
+const Messages = ({dialogs, messages, sendMessage, selectedDialogId, resetForm,
+                      dialogsIsFetching, messagesIsFetching}) => {
     const dialogsElements = dialogs.map(d => {
         return <Dialog key={d.id} name={d.userName} id={d.id} photos={d.photos.small}/>
     });
@@ -20,15 +22,18 @@ const Messages = ({dialogs, messages, sendMessage, selectedDialogId, resetForm})
 
     return (
         <div className={style.messages}>
-            <div className={style.dialogs}>
-                {dialogsElements}
-            </div>
+            {dialogsIsFetching
+                ? <div style={{width: "300px"}}><Preloader/></div>
+                : <div className={style.dialogs}>
+                    {dialogsElements}
+                </div>}
             {
                 selectedDialogId
                     ? <div className={style.chats}>
-                        {messagesItems.length > 0
-                            ? messagesItems
-                            : <div className={style.noMessages}>No messages</div>}
+                        {messagesIsFetching && <div className={style.noMessages}><Preloader/></div>}
+                        {messagesItems.length > 0 && !messagesIsFetching  && messagesItems}
+                        {!messagesIsFetching && messagesItems.length === 0
+                        && <div className={style.noMessages}>No messages</div>}
                         <AddMessageReduxForm onSubmit={sendNewMessage}/>
                     </div>
                     : <div className={style.select}>Please select dialog</div>

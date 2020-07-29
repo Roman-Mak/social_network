@@ -4,8 +4,8 @@ import ProfileContainer from "../content_components/Profile/ProfileContainer";
 import UsersContainer from "../content_components/Users/UsersContainer";
 import Login from "../content_components/Login/Login";
 import Preloader from "../common/Preloader/Preloader";
+import MessagesContainer from "../content_components/Messages/MessagesContainer";
 
-const MessagesContainer = React.lazy(() => import("../content_components/Messages/MessagesContainer"));
 const Friends = React.lazy(() => import("../content_components/Friends/Friends"));
 const Settings = React.lazy(() => import("../content_components/Settings/Settings"));
 
