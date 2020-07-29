@@ -7,7 +7,7 @@ const Dialog = ({id, name, photos}) => {
     return (
         // <div>
             <NavLink to={"/messages/" + id} className={style.dialog} activeClassName={style.active}>
-                <img src={photos ? photos.small : userPhoto} alt={"avatar"}/>
+                <img src={photos ? photos : userPhoto} alt={"avatar"}/>
                 {name}
             </NavLink>
         // </div>
