@@ -5,14 +5,17 @@ import Chat from "./Chat/Chat";
 import {Field, reduxForm} from "redux-form";
 import {Textarea} from "../../common/FormsControls/FormsControl";
 
-const Messages = ({dialogs, messages, sendMessage, selectedDialogId}) => {
-    const dialogsElements = dialogs.map(d => <Dialog key={d.id} name={d.userName} id={d.id} photos={d.photos.small}/>);
-    const messagesItems = messages.map(m => <Chat key={m.id}
-                                                  message={m.body}
-                                                  sender={m.senderName} addedAt={m.addedAt} senderId={m.senderId}/>);
+const Messages = ({dialogs, messages, sendMessage, selectedDialogId, resetForm}) => {
+    const dialogsElements = dialogs.map(d => {
+        return <Dialog key={d.id} name={d.userName} id={d.id} photos={d.photos.small}/>
+    });
+    const messagesItems = messages.map(m => {
+        return <Chat key={m.id} message={m.body} sender={m.senderName} addedAt={m.addedAt} senderId={m.senderId}/>
+    });
 
     const sendNewMessage = (formData) => {
         sendMessage(selectedDialogId, formData.newMessageText);
+        resetForm("newMessage");
     };
 
     return (
@@ -39,13 +42,12 @@ const AddMessageForm = ({handleSubmit}) => {
         <form onSubmit={handleSubmit} className={style.form}>
             <Field name={"newMessageText"} component={Textarea}
                    style={{width: "495px", height: "50px", resize: "none"}}
-                   placeholder={"Write your message..."}
-            />
+                   placeholder={"Write your message..."}/>
             <button>Send</button>
         </form>
     )
 };
 
-const AddMessageReduxForm = reduxForm({form: 'newMessage'})(AddMessageForm);
+const AddMessageReduxForm = reduxForm({form: "newMessage"})(AddMessageForm);
 
 export default Messages

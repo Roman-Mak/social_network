@@ -51,6 +51,7 @@
     font-weight: 500;
     padding: 4px 20px;
     border-radius: 4px;
+    outline: none;
 }
 
 .form button:hover {

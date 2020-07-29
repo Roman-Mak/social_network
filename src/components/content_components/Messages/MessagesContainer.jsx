@@ -4,6 +4,7 @@ import Messages from "./Messages";
 import {connect} from "react-redux";
 import {withAuthRedirect} from "../../../hoc/withAuthRedirect";
 import {compose} from "redux";
+import {reset} from 'redux-form';
 
 class MessagesContainer extends React.Component {
     componentDidMount() {
@@ -20,7 +21,9 @@ class MessagesContainer extends React.Component {
         return <Messages dialogs={this.props.dialogs}
                          messages={this.props.messages}
                          sendMessage={this.props.sendMessage}
-                         selectedDialogId={this.props.selectedDialogId}/>
+                         selectedDialogId={this.props.selectedDialogId}
+                         resetForm={this.props.reset}
+        />
     }
 }
 
@@ -34,5 +37,5 @@ const mapStateToProps = (state) => {
 
 export default compose(
     withAuthRedirect,
-    connect(mapStateToProps, {initDialogs, updateDialog, sendMessage})
+    connect(mapStateToProps, {initDialogs, updateDialog, sendMessage, reset})
 )(MessagesContainer);
