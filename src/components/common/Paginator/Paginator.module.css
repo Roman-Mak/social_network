@@ -21,6 +21,10 @@
     background-color: #086393;
 }
 
+.paginator button:disabled {
+    opacity: 0.5;
+}
+
 .selectedPage {
     font-weight: bold;
     background-color: #088dcd;

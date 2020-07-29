@@ -33,11 +33,12 @@ class UsersContainer extends React.Component {
     render = () => {
         return (
             <div className={style.container}>
-                <Paginator totalItemsCount={this.props.totalUsersCount}
-                           currentPage={this.props.currentPage}
-                           pageSize={this.props.pageSize}
-                           portionCount={"10"}
-                           onPageChanged={this.onPageChanged}/>
+                {this.props.totalUsersCount > this.props.pageSize
+                && <Paginator totalItemsCount={this.props.totalUsersCount}
+                              currentPage={this.props.currentPage}
+                              pageSize={this.props.pageSize}
+                              portionCount={"10"}
+                              onPageChanged={this.onPageChanged}/>}
                 {this.props.isFetching
                     ? <div><Preloader/></div>
                     : <Users users={this.props.users}
