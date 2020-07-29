@@ -1,15 +1,7 @@
 import React from "react";
 import style from "./Navbar.module.css"
 import {NavLink} from "react-router-dom";
-import {
-    FRIENDS_PATH,
-    MESSAGES_PATH,
-    MUSIC_PATH,
-    NEWS_PATH,
-    PROFILE_PATH,
-    SETTINGS_PATH,
-    USERS_PATH
-} from "../Routes/Routes";
+import {FRIENDS_PATH, MESSAGES_PATH, PROFILE_PATH, SETTINGS_PATH, USERS_PATH} from "../Routes/Routes";
 
 const Navbar = () => {
     return (
@@ -22,12 +14,6 @@ const Navbar = () => {
             </div>
             <div className={style.item}>
                 <NavLink to={MESSAGES_PATH} activeClassName={style.active}>Messages</NavLink>
-            </div>
-            <div className={style.item}>
-                <NavLink to={NEWS_PATH} activeClassName={style.active}>News</NavLink>
-            </div>
-            <div className={style.item}>
-                <NavLink to={MUSIC_PATH} activeClassName={style.active}>Music</NavLink>
             </div>
             <div className={style.item}>
                 <NavLink to={SETTINGS_PATH} activeClassName={style.active}>Settings</NavLink>

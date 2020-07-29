@@ -60,10 +60,10 @@ export const toggleFollowingInProcess = (isFetching, userId) => ({
     userId
 });
 
-export const requestUsers = (currentPage, pageSize) => async (dispatch) => {
+export const requestUsers = (currentPage, pageSize, isFriend) => async (dispatch) => {
     dispatch(setCurrentPage(currentPage));
     dispatch(toggleIsFetching(true));
-    const data = await usersAPI.getUsers(currentPage, pageSize);
+    const data = await usersAPI.getUsers(currentPage, pageSize, isFriend);
     dispatch(toggleIsFetching(false));
     dispatch(setUsers(data.items));
     dispatch(setTotalUsersCount(data.totalCount))

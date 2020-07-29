@@ -7,15 +7,15 @@ const instance = axios.create({
 });
 
 export const usersAPI = {
-    getUsers(currentPage = 1, pageSize) {
-        return instance.get(`users?page=${currentPage}&count=${pageSize}`).then(res => res.data)
+    getUsers(currentPage = 1, pageSize, isFriend) {
+        return instance.get(`users?page=${currentPage}&count=${pageSize}&friend=${isFriend}`).then(res => res.data)
     },
     followUser(userId) {
         return instance.post(`follow/${userId}`, {}).then(res => res.data);
     },
     unfollowUser(userId) {
         return instance.delete(`follow/${userId}`).then(res => res.data);
-    }
+    },
 };
 
 export const profileAPI = {
