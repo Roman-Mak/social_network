@@ -23,7 +23,9 @@ const Messages = ({dialogs, messages, sendMessage, selectedDialogId}) => {
             {
                 selectedDialogId
                     ? <div className={style.chats}>
-                        {messagesItems}
+                        {messagesItems.length > 0
+                            ? messagesItems
+                            : <div className={style.noMessages}>No messages</div>}
                         <AddMessageReduxForm onSubmit={sendNewMessage}/>
                     </div>
                     : <div className={style.select}>Please select dialog</div>
