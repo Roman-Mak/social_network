@@ -62,8 +62,8 @@ export const messagesAPI = {
     getMessages(userId) {
         return instance.get(`dialogs/${userId}/messages`).then(res => res.data);
     },
-    sendMessage(userId) {
-        return instance.post(`dialogs/${userId}/messages`).then(res => res.data);
+    sendMessage(userId, body) {
+        return instance.post(`dialogs/${userId}/messages`, {body}).then(res => res.data);
     },
     getMessageViewed(messageId) {
         return instance.get(`dialogs/messages/${messageId}/viewed`).then(res => res.data);

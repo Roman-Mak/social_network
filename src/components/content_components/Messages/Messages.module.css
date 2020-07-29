@@ -1,11 +1,18 @@
 .messages {
     display: flex;
-    flex-direction: row;
+    margin-left: 70px;
+    margin-top: 30px;
+    justify-content: space-around;
+    align-items: flex-start;
+    width: 100%;
 }
 
 .dialogs {
-    width: 30%;
-    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    border: 1px solid #e2e9e6;
+    background-color: #ffffff;
 }
 
 .dialogs .active {
@@ -13,5 +20,37 @@
 }
 
 .chats {
-    padding: 10px;
+    border-top: 1px solid #e2e9e6;
+    width: 500px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.form button {
+    background-color: #088dcd;
+    color: #ffffff;
+    border: none;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 4px 20px;
+    border-radius: 4px;
+}
+
+.form button:hover {
+    cursor: pointer;
+    background-color: #086393;
+}
+
+.form button:disabled {
+    opacity: 0.5;
+}
+
+.select {
+    font-size: 20px;
+    margin-left: 200px;
+    margin-top: 15px;
 }
