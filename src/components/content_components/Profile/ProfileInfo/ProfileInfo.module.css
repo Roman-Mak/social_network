@@ -75,7 +75,7 @@
     margin-top: 20px;
 }
 
-.profilePreview label:hover {
+.profilePreview label:hover, .contacts div:hover:not(:first-child), .about div:hover:not(:first-child) {
     text-decoration: underline;
     cursor: pointer;
 }
@@ -102,7 +102,7 @@
 }
 
 .secondContainer {
-    margin-top: 60px;
+    margin-top: 120px;
     width: 730px;
     display: flex;
     justify-content: space-between;
@@ -113,9 +113,6 @@
     width: 100%;
     margin-top: 20px;
     background-color: #ffffff;
-    /*border-top: 1px solid #e2e9e6;*/
-    /*border-left: 1px solid #e2e9e6;*/
-    /*border-right: 1px solid #e2e9e6;*/
 }
 
 .about div, .contacts div {
@@ -129,6 +126,12 @@
     padding-right: 10px;
     display: flex;
     justify-content: center;
+}
+
+.about textarea {
+    width: 100%;
+    resize: none;
+    min-height: 60px;
 }
 
 .contacts {

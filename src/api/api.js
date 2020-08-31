@@ -34,6 +34,9 @@ export const profileAPI = {
         return instance.put(`profile/photo`, formData, {
             headers: {"Content-Type": "multipart/form-data"}
         }).then(res => res.data)
+    },
+    setProfileDescription(obj) {
+        return instance.put(`profile`, obj).then(res => res.data)
     }
 };
 

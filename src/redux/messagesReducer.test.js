@@ -60,7 +60,6 @@ let initialState = {
     messageText: ""
 };
 
-
 test("message should be correct", () => {
     let action = addMessage("Roma");
     let newState = messagesReducer(initialState, action);

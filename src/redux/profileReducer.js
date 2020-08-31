@@ -5,6 +5,7 @@ const SET_USER_PROFILE = "socialNetwork/profileReducer/SET-USER-PROFILE";
 const UPDATE_STATUS = "socialNetwork/profileReducer/UPDATE-STATUS";
 const GET_STATUS = "socialNetwork/profileReducer/GET-STATUS";
 const SET_PHOTO = "socialNetwork/profileReducer/SET-PHOTO";
+const SET_DESCRIPTION = "socialNetwork/profileReducer/SET_DESCRIPTION";
 
 let initialState = {
     posts: [
@@ -35,6 +36,8 @@ const profileReducer = (state = initialState, action) => {
             return {...state, status: action.status};
         case SET_PHOTO:
             return {...state, profile: {...state.profile, photos: action.photos}};
+        case SET_DESCRIPTION:
+            return {...state, profile: {...state.profile, ...action.profileInfo}};
         default:
             return state;
     }
@@ -45,6 +48,7 @@ export const getUserProfileSuccess = (profile) => ({type: SET_USER_PROFILE, prof
 export const updateStatusSuccess = (status) => ({type: UPDATE_STATUS, status});
 export const getUserStatusSuccess = (status) => ({type: GET_STATUS, status});
 export const setPhotoSuccess = (photos) => ({type: SET_PHOTO, photos});
+export const setProfileDescriptionSuccess = (profileInfo) => ({type: SET_DESCRIPTION, profileInfo});
 
 export const getUserProfile = (userId) => async (dispatch) => {
     const data = await profileAPI.getUserProfile(userId);
@@ -64,6 +68,12 @@ export const setPhoto = (image) => async (dispatch) => {
     const res = await profileAPI.setPhoto(image);
     if (res.resultCode === 0) {
         dispatch(setPhotoSuccess(res.data.photos));
+    }
+};
+export const setProfileDescription = (desc) => async (dispatch) => {
+    const res = await profileAPI.setProfileDescription(desc);
+    if (res.resultCode === 0) {
+        dispatch(setProfileDescriptionSuccess(desc));
     }
 };
 
