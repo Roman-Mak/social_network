@@ -48,3 +48,10 @@
     justify-content: center;
     align-items: center;
 }
+
+.captcha {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

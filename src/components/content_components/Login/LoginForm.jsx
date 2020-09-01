@@ -4,7 +4,7 @@ import {Field, reduxForm} from "redux-form";
 import {Input} from "../../common/FormsControls/FormsControl";
 import {required} from "../../../utils/vallidators";
 
-const LoginForm = ({handleSubmit, error}) => {
+const LoginForm = ({handleSubmit, error, captchaUrl}) => {
     return (
         <form onSubmit={handleSubmit} className={style.form}>
             <div>
@@ -19,12 +19,17 @@ const LoginForm = ({handleSubmit, error}) => {
                 <Field name={"rememberMe"} type={"checkbox"} component={"input"}/>
                 <span>remember me</span>
             </div>
+            {captchaUrl && <div className={style.captcha}>
+                <img src={captchaUrl} alt={"captcha"}/>
+                <Field name={"captcha"} type={"text"} placeholder={"Symbols from image"} component={Input}
+                       validate={[required]}/>
+            </div>}
             <button>Sign In</button>
             {error && <div style={{color: "red"}}>{error}</div>}
         </form>
     )
 };
 
-const LoginReduxForm = reduxForm({form: 'login'})(LoginForm);
+const LoginReduxForm = reduxForm({form: "login"})(LoginForm);
 
 export default LoginReduxForm;
