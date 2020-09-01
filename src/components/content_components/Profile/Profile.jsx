@@ -7,7 +7,7 @@ import MyPostsContainer from "./MyPosts/MyPostsContainer";
 import ProfileContacts from "./ProfileInfo/ProfileContacts";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
-const Profile = ({profile, updateStatus, status, isOwner, setPhoto, setProfileDescription}) => {
+const Profile = ({profile, updateStatus, status, isOwner, setPhoto, setProfileDescription, error, isFetching}) => {
     if (!profile) {
         return <div className={style.profilePreloader}><Preloader/></div>
     }
@@ -44,7 +44,9 @@ const Profile = ({profile, updateStatus, status, isOwner, setPhoto, setProfileDe
                 </div>
             </div>
             <div className={style.secondContainer}>
-                <ProfileContacts profile={profile} setProfileDescription={setProfileDescription} isOwner={isOwner}/>
+                <ProfileContacts profile={profile} setProfileDescription={setProfileDescription}
+                                 isFetching={isFetching}
+                                 isOwner={isOwner} error={error}/>
                 <MyPostsContainer/>
             </div>
         </div>

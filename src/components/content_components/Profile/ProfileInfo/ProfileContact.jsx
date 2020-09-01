@@ -1,6 +1,7 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
+import style from "./ProfileInfo.module.css";
 
-const ProfileContact = ({contactKey, contactValue, profile, setProfileDescription, isOwner}) => {
+const ProfileContact = ({contactKey, contactValue, profile, setProfileDescription, isOwner, isFetching, error}) => {
     const contact = contactValue ? contactValue : "not specified";
     const key = contactKey[0].toUpperCase() + contactKey.slice(1);
 
@@ -10,17 +11,27 @@ const ProfileContact = ({contactKey, contactValue, profile, setProfileDescriptio
     const updateProfileDescription = () => {
         const updatedProfileDescription = {...profile, contacts: {...profile.contacts, [contactKey]: inputValue}};
         delete updatedProfileDescription.photos;
-        setEditMode(false);
         setProfileDescription(updatedProfileDescription);
     };
+
+    useEffect(() => {
+        setInputValue(contact);
+    }, [contact]);
+
+    useEffect(() => {
+        if (!error && !isFetching) {
+            setEditMode(false);
+        }
+    }, [error, isFetching]);
 
     return (
         <>
             {editMode && isOwner
-                ? <label>{`${key}:`}
+                ? <label className={style.contactContainer}>{`${key}:`}
                     <input value={inputValue} onChange={(e) => setInputValue(e.currentTarget.value)}
-                           autoFocus={true}
-                           onBlur={updateProfileDescription}/>
+                           autoFocus={true}/>
+                           <button className={style.btn} onClick={updateProfileDescription}
+                                   disabled={isFetching}>save</button>
                 </label>
                 : <div onClick={() => setEditMode(true)}>{`${key}: ${contact}`}</div>}
         </>

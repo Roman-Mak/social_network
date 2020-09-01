@@ -6,6 +6,8 @@ const UPDATE_STATUS = "socialNetwork/profileReducer/UPDATE-STATUS";
 const GET_STATUS = "socialNetwork/profileReducer/GET-STATUS";
 const SET_PHOTO = "socialNetwork/profileReducer/SET-PHOTO";
 const SET_DESCRIPTION = "socialNetwork/profileReducer/SET_DESCRIPTION";
+const SET_ERROR = "socialNetwork/profileReducer/SET-ERROR";
+const TOGGLE_IS_FETCHING = "socialNetwork/profileReducer/TOGGLE-IS-FETCHING";
 
 let initialState = {
     posts: [
@@ -14,7 +16,9 @@ let initialState = {
         {message: "I'm not your slave!", id: "1"}
     ],
     profile: null,
-    status: null
+    status: null,
+    error: "",
+    isFetching: false
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -38,6 +42,10 @@ const profileReducer = (state = initialState, action) => {
             return {...state, profile: {...state.profile, photos: action.photos}};
         case SET_DESCRIPTION:
             return {...state, profile: {...state.profile, ...action.profileInfo}};
+        case SET_ERROR:
+            return {...state, error: action.error};
+        case TOGGLE_IS_FETCHING:
+            return {...state, isFetching: action.isFetching};
         default:
             return state;
     }
@@ -49,6 +57,8 @@ export const updateStatusSuccess = (status) => ({type: UPDATE_STATUS, status});
 export const getUserStatusSuccess = (status) => ({type: GET_STATUS, status});
 export const setPhotoSuccess = (photos) => ({type: SET_PHOTO, photos});
 export const setProfileDescriptionSuccess = (profileInfo) => ({type: SET_DESCRIPTION, profileInfo});
+const setError = (error) => ({type: SET_ERROR, error});
+const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching});
 
 export const getUserProfile = (userId) => async (dispatch) => {
     const data = await profileAPI.getUserProfile(userId);
@@ -71,9 +81,16 @@ export const setPhoto = (image) => async (dispatch) => {
     }
 };
 export const setProfileDescription = (desc) => async (dispatch) => {
+    dispatch(toggleIsFetching(true));
     const res = await profileAPI.setProfileDescription(desc);
     if (res.resultCode === 0) {
         dispatch(setProfileDescriptionSuccess(desc));
+        dispatch(setError(""));
+        dispatch(toggleIsFetching(false));
+    } else {
+        const message = res.messages.length > 0 ? res.messages[0] : "some error";
+        dispatch(setError(message));
+        dispatch(toggleIsFetching(false));
     }
 };
 

@@ -41,6 +41,8 @@ class ProfileContainer extends React.Component {
                    profile={this.props.profile}
                    updateStatus={this.props.updateStatus}
                    status={this.props.status}
+                   error={this.props.error}
+                   isFetching={this.props.isFetching}
                    setProfileDescription={this.props.setProfileDescription}
                    setPhoto={this.props.setPhoto}/>
       )
@@ -51,8 +53,10 @@ let mapStateToProps = (state) => {
     return {
         profile: state.profilePage.profile,
         status: state.profilePage.status,
-        userId: state.auth.userId
-    }
+        userId: state.auth.userId,
+        error: state.profilePage.error,
+        isFetching: state.profilePage.isFetching
+    };
 };
 
 export default compose(

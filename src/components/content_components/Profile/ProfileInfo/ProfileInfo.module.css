@@ -134,10 +134,45 @@
     min-height: 60px;
 }
 
+.contactsContainer {
+    display: flex;
+    flex-direction: column;
+}
+
 .contacts {
     width: 240px;
     background-color: #ffffff;
     border-top: 1px solid #e2e9e6;
     border-left: 1px solid #e2e9e6;
     border-right: 1px solid #e2e9e6;
+}
+
+.error {
+    color: red;
+}
+
+.contactContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.btn {
+    color: #ffffff;
+    border: none;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 4px 20px;
+    border-radius: 4px;
+    outline: none;
+    background-color: #088dcd;
+    align-self: flex-end;
+}
+
+.btn:hover {
+    cursor: pointer;
+    background-color: #086393;
+}
+
+.btn:disabled {
+    opacity: 0.5;
 }
