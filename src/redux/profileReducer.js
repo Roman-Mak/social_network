@@ -5,7 +5,7 @@ const SET_USER_PROFILE = "socialNetwork/profileReducer/SET-USER-PROFILE";
 const UPDATE_STATUS = "socialNetwork/profileReducer/UPDATE-STATUS";
 const GET_STATUS = "socialNetwork/profileReducer/GET-STATUS";
 const SET_PHOTO = "socialNetwork/profileReducer/SET-PHOTO";
-const SET_DESCRIPTION = "socialNetwork/profileReducer/SET_DESCRIPTION";
+const SET_DESCRIPTION = "socialNetwork/profileReducer/SET-DESCRIPTION";
 const SET_ERROR = "socialNetwork/profileReducer/SET-ERROR";
 const TOGGLE_IS_FETCHING = "socialNetwork/profileReducer/TOGGLE-IS-FETCHING";
 
@@ -52,11 +52,11 @@ const profileReducer = (state = initialState, action) => {
 };
 
 export const addPost = (newPostText) => ({type: ADD_POST, newPostText});
-export const getUserProfileSuccess = (profile) => ({type: SET_USER_PROFILE, profile});
-export const updateStatusSuccess = (status) => ({type: UPDATE_STATUS, status});
-export const getUserStatusSuccess = (status) => ({type: GET_STATUS, status});
-export const setPhotoSuccess = (photos) => ({type: SET_PHOTO, photos});
-export const setProfileDescriptionSuccess = (profileInfo) => ({type: SET_DESCRIPTION, profileInfo});
+const getUserProfileSuccess = (profile) => ({type: SET_USER_PROFILE, profile});
+const updateStatusSuccess = (status) => ({type: UPDATE_STATUS, status});
+const getUserStatusSuccess = (status) => ({type: GET_STATUS, status});
+const setPhotoSuccess = (photos) => ({type: SET_PHOTO, photos});
+const setProfileDescriptionSuccess = (profileInfo) => ({type: SET_DESCRIPTION, profileInfo});
 const setError = (error) => ({type: SET_ERROR, error});
 const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching});
 
